@@ -1,1 +1,5 @@
-from  Modules.getClients import searchName
+import Modules.getClients as cliente 
+
+print(cliente.getAllClientPaisRegionCiudad("Australia", "sur"), )
+
+
