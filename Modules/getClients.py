@@ -20,8 +20,8 @@ def getOneClienteCodigo(codigo):
          } 
             
 def getAllClientCreditCiudad(limiteCredit, ciudad):
-            clienteCredic.append(val)
-            return clientCredic 
+    ClientCredit.append(val)
+    return ClientCredit 
   
 def getAllClientPaisRegionCiudad(pais,region=None, ciudad=None): 
     clientZone = list()
