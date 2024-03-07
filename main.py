@@ -10,5 +10,8 @@ import Modules.getPedido as pedidos
     
 #print(tabulate(empleado.getAllNombreApellidoPuesto(), tablefmt= "grid"))
 
-print(tabulate(pedidos.getAllPedidosEntregadosAtrasadosDeTiempo(), tablefmt= "grid"))
+#print(tabulate(pedidos.getAllPedidosEntregadosAtrasadosDeTiempo(), tablefmt= "grid"))
 
+#print(tabulate(pedidos.getAllPedidosClienteFechaEsperadaFechaDeEntrega(), tablefmt= "grid"))
+
+print(tabulate(pedidos.getAllPedidosRechazados(), tablefmt= "grid")) 
