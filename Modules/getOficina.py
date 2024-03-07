@@ -1,23 +1,24 @@
 import Storage.oficina as of 
 
-def getAllCodigoCiudad():
-    getAllCodigoCiudad = []
+def getCodigoOfiCiudadName():
+    CodigoOfCiudad = list()
     for val in of.oficina:
-        codigoCiudad.append({
-            
-            "codigo": val.get ("codigo_oficina"),
-            "codigo": val.get ("oficina")
+        codigoNames = dict({
+            "codigo_oficina": val.get('codigo_oficina'),
+            "ciudad": val.get('ciudad')
         })
-        return codigoCiudad 
-    def getAllCiudadTelefeno(pais):
-        getAllCiudadTelefeno = []
-        for val in of.oficina:
-            if(val.get("pais") == pais):
-                ciudadTelefono.append ({
-                
-                "ciudad": val.get ("ciudad"), 
-                "telefono": val.get ("telefono"), 
-                "oficina": val.get ("codigo_oficina"), 
-                "pais": val.get ("pais"), 
-            })
-            return ciudadTelefeno
+        CodigoOfCiudad.append(codigoNames)
+    return CodigoOfCiudad
+    
+    
+def getCiudadTelefonoEspaña():
+    ciudadTelefonoEspaña = []
+    for val in of.oficina:
+        if val.get('pais') == "España" :
+            ciudadTelefonoEspaña.append(
+                {
+                    "ciudad": val.get("ciudad"),
+                    "telefono": val.get("telefono")
+                }
+            )
+    return ciudadTelefonoEspaña
