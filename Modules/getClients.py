@@ -1,4 +1,5 @@
 import  Storage.cliente as cli
+from tabulate import tabulate
 
 def getAllClientsName():
     clienteName = list()
@@ -33,6 +34,21 @@ def getAllClientPaisRegionCiudad(pais,region=None, ciudad=None):
             elif((region != None and val.get('region') == region)): 
                 clientZone.append(val)     
     return clientZone
+
+
+def menu():
+    print("""  
+    ____                        __                   __        __                   ___            __           
+   / __ \___  ____  ____  _____/ /____  _____   ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
+  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/  / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
+ / _, _/  __/ /_/ / /_/ / /  / /_/  __(__  )  / /_/ /  __/  / / /_/ (__  )  / /__/ / /  __/ / / / /_/  __(__  ) 
+/_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/  /_/\____/____/   \___/_/_/\___/_/ /_/\__/\___/____/  
+         
+        
+         1. obtener nombre del cliente 
+""")
+menu()
+   
   
             
      
