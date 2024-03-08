@@ -36,6 +36,23 @@ def getAllClientPaisRegionCiudad(pais,region=None, ciudad=None):
     return clientZone
 
 
+
+def getNombreClientesEspañoles():
+    getNombreClientesEspañoles = []
+    for val in cli.clientes:
+        if val.get('pais') == "Spain" :
+            getNombreClientesEspañoles.append(
+                {
+                    "nombre_cliente": val.get("nombre_cliente")
+                }
+            )  
+    return getNombreClientesEspañoles
+
+
+
+
+
+
 def menu():
     print("""  
     ____                        __                   __        __                   ___            __           

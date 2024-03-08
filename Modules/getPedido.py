@@ -78,4 +78,11 @@ def getAllPedidosRechazados():
         if val.get("estado") == "Rechazado" and fechaRechazo.startswith("2009"): 
            pedidosRechazados.append(val)
     return pedidosRechazados
-            
+
+
+def getEstadoPedidos():
+    estadosPedidos = set()
+    for val in pe.pedido:
+       estado_pedido = val.get('estado')
+       estadosPedidos.add(estado_pedido)
+    return estadosPedidos
