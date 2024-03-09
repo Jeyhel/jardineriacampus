@@ -1,4 +1,5 @@
 import  Storage.empleado as em
+from tabulate import tabulate 
 
 def getNombreApellidoJefe():
     NombreApellidoJefe = []
@@ -52,5 +53,8 @@ def menu():
 /_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/  /_/\____/____/   \___/_/ /_/ /_/ .___/_/\___/\__,_/\__,_/\____/____/  
           /_/                                                                            /_/                                      
     """)
-
-
+opcion = int(input("\nSeleccione una de las opciones: "))
+if(opcion == 1):
+    print(tabulate(getAllNombreApellidoEmailJefe(), headers="keys", tablefmt="github")
+elif(opcion ==2):
+    print
