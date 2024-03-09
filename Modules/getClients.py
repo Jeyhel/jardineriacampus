@@ -64,8 +64,6 @@ def menu():
         
          1. obtener nombre del cliente 
 """)
-menu()
-   
   
             
      

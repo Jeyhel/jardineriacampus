@@ -86,3 +86,18 @@ def getEstadoPedidos():
        estado_pedido = val.get('estado')
        estadosPedidos.add(estado_pedido)
     return estadosPedidos
+
+
+def getAllPedidosDeEnero():
+    PedidosDeEnero = list()
+    for val in pe.pedido:
+        if (val.get("estado") == "Entregado" and val.get("fecha_entrega") != None):
+            FechaEntregada = "/".join(val.get("fecha_entrega").split("-")[::-1])
+            start = datetime.strptime(FechaEntregada, "%d/%m/%Y")
+            if val.get("estado") == "Entregado" and start.month == 1:
+                PedidosDeEnero.append(val)
+    return PedidosDeEnero
+
+
+
+         
