@@ -10,7 +10,7 @@ import sys
 
 
 #punto 1
-# print(tabulate(oficina.getCodigoOfiCiudadName(), tablefmt="grid"))
+#print(tabulate(oficina.getCodigoOfiCiudadName(), tablefmt="grid"))
 
 #punto 2
 #print(tabulate(oficina.getCiudadTelefonoEspaña(), tablefmt="grid"))
@@ -50,7 +50,7 @@ import sys
 #print(pago.getAllPagoFecha())
 
 #punto 14 
-print(pago.getAllFormaDePago())
+#print(pago.getAllFormaDePago())
 
 
 #menu()   
@@ -64,26 +64,32 @@ print(pago.getAllFormaDePago())
             #file = modulo.split(".")[-1]  # Cambio "get" por "."
             #print(file)
             
-if (__name__ == "__main__"):
-   print("""
+if(__name__ == "__main__"):
+    while True:
+      print("""
     __  ___                    ____       _            _             __
    /  |/  /__  ____  __  __   / __ \_____(_)___  _____(_)___  ____ _/ /
   / /|_/ / _ \/ __ \/ / / /  / /_/ / ___/ / __ \/ ___/ / __ \/ __ `/ / 
  / /  / /  __/ / / / /_/ /  / ____/ /  / / / / / /__/ / /_/ / /_/ / /  
 /_/  /_/\___/_/ /_/\__,_/  /_/   /_/  /_/_/ /_/\___/_/ .___/\__,_/_/   
                                                     /_/                
-            1.Cliente
+            1.Clients
             2.Oficina
             3.Empleado
             4.Pedidos
+            5.Pago
+            6.Salir
 """)
-   opcion = int(input("\nSeleccione una de las opciones: "))
-   if opcion == 1:
-     cliente.menu
-   elif opcion == 2:    
-     oficina.menu()     
-   elif opcion == 3:  
-     empleado.menu()
-   elif opcion == 4: 
-     pedidos.menu()
-    
+      opcion = int(input("\nSeleccione una de las opciones: "))
+      if(opcion == 1):
+        cliente.menu
+      elif(opcion == 2):    
+        oficina.menu()     
+      elif(opcion == 3):  
+        empleado.menu()
+      elif(opcion == 4): 
+        pedidos.menu()
+      elif(opcion == 5): 
+        pago.menu()
+      elif(opcion == 6): 
+        break
