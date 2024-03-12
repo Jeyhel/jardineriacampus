@@ -45,14 +45,39 @@ def getNombreClientesEspañoles():
             )  
     return getNombreClientesEspañoles
 
+# #punto 16
+# def getAllCLienteCiudadDeMadrid():
+#     getClienteCiudadDeMadrid = []
+#     for val  in cli.cliente:
+#         if val.get('codigoDeEmpleado') == 11 or val.get('codigo de empleado') == 30: 
+#             if val.get ("Ciudad") == "Madrid":  
+#                 getClienteCiudadDeMadrid.append( 
+#                 {
+#                     "cliente_ciudad": val.get("cliente_ciudad")
+#                 }
+#             )  
+#     return getClienteCiudadDeMadrid
 
 
 
-
+def getAllClienteCiudadDeMadrid():
+    ClienteCiudadDeMadrid = []
+    for val in cli.cliente:
+        if val.get("ciudad") == "Madrid":
+            if val.get("codigo_empleado_rep_ventas") in [11, 30]:
+                ClienteCiudadDeMadrid.append(
+                    {
+                        "codigoCliente": val.get("codigo_cliente"),
+                        "nombreCliente": val.get("nombre_cliente"),
+                        "ciudad": val.get("ciudad"),
+                        "representante_de_ventas": val.get("codigo_empleado_rep_ventas")
+                    }
+                )
+    return ClienteCiudadDeMadrid
 
 def menu():
-    while True: 
-        print("""  
+        while True: 
+            print("""  
     ____                        __                   __        __                   ___            __           
    / __ \___  ____  ____  _____/ /____  _____   ____/ /__     / /___  _____   _____/ (_)__  ____  / /____  _____
   / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/  / __  / _ \   / / __ \/ ___/  / ___/ / / _ \/ __ \/ __/ _ \/ ___/
@@ -65,19 +90,19 @@ def menu():
          4. obenter clientes españoles
          5. Salir
 """)
-        opcion = int(input("\nSeleccione una de las opciones: "))
-        if(opcion == 1):
-            print(tabulate(getAllClientsName(), headers="keys", tablefmt="github"))
-        elif(opcion == 2):
-            print(tabulate(getOneClienteCodigo(), headers="keys", tablefmt="github"))
-        elif(opcion == 3):
-            print(tabulate(getAllClientPaisRegionCiudad(), headers="keys", tablefmt="github"))
-        elif(opcion == 4):
-            print(tabulate( getNombreClientesEspañoles(), headers="keys", tablefmt="github"))
-        elif(opcion == 5):
-            break
-        else:
-            print("elija una opcion valida")
+            opcion = int(input("\nSeleccione una de las opciones: "))
+            if(opcion == 1):
+                print(tabulate(getAllClientsName(), headers="keys", tablefmt="github"))
+            elif(opcion == 2):
+                print(tabulate(getOneClienteCodigo(), headers="keys", tablefmt="github"))
+            elif(opcion == 3):
+                print(tabulate(getAllClientPaisRegionCiudad(), headers="keys", tablefmt="github"))
+            elif(opcion == 4):
+                print(tabulate( getNombreClientesEspañoles(), headers="keys", tablefmt="github"))
+            elif(opcion == 5):
+                break
+            else:
+                print("elija una opcion valida")
             
      
         
