@@ -1,3 +1,4 @@
+# import os 
 from tabulate import tabulate
 import Modules.getClients as cliente 
 import Modules.getOficina as oficina 
@@ -80,6 +81,19 @@ if(__name__ == "__main__"):
             5.Pago
             6.Salir
 """)
+      # print("Presiona [ctrl + C] Para salir del programa ")
+       
+#     try:
+#     opcion = int(input("seleccione una de las opciones: "))
+#         except KeyboardInterrupt:
+#             os.system("clear")
+#             print("Has salido exitosamente!")
+#             break
+#     else:
+#         if (opcion == 1):
+#             print(tabulate(getAllStocksPriceGama))
+      
+      
       opcion = int(input("\nSeleccione una de las opciones: "))
       if(opcion == 1):
         cliente.menu
