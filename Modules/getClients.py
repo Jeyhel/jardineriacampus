@@ -75,6 +75,19 @@ def getAllClienteCiudadDeMadrid():
                 )
     return ClienteCiudadDeMadrid
 
+
+
+
+# def getAllClienteAndRepresentante():
+#     ClienteAndRepresentante = []
+#     for val in cli.cliente:
+#         if val.getf("nombre")
+    
+    
+    
+    
+    
+
 def menu():
         while True: 
             print("""  

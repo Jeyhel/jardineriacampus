@@ -1,5 +1,8 @@
 # # import os
-# from tabulate import tabulate 
+from tabulate import tabulate 
+import json 
+import requests
+
 
 import Storage.producto as pr
 #gama ornametales
@@ -39,14 +42,23 @@ def getAllStocksPriceGama(gama, stock):
 /_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/  /_/\____/____/  / .___/_/   \____/\__,_/\__,_/\___/\__/\____/____/  
           /_/                                                             /_/                                                  
           1.Obtener todos los productos de una categoria ordenando sus precios de venta, tambien que su cantidad de inventario sea superior (ejemplo: Ornamentales)
+          2.Guardar
           0.Regresar al menu principal 
           
         """)
-            opcion = int(input("\nSleccione una de las opciones"))
+            opcion = int(input("\nSleccione una de las opciones: "))
             if(opcion == 1):
-                gama = input("Ingrese la gama que deseas filtrar")
-                stock   = int(input("Ingrese  las unidades que deseas mostrar"))
-                print(tabulate)
+                gama = input("Ingrese la gama que deseas filtrar: ")
+                stock   = int(input("Ingrese  las unidades que deseas mostrar: "))
+                print(tabulate(getAllStocksPriceGama(gama, stock), headers="keys", tablefmt="·github"))
+            elif(opcion == 2):
+                producto = {
+                    "codigo_producto": input("Ingrese el codigo del producto: "),
+                    "nombre": input("Ingrese el nombre del nombre: "),
+                    "gama":input("Ingrese la ga,ma del prodcuto : "),
+                    "dimensiones": input("Ingrese a gama del prodcuto")
+                    "proveedor": 
+                }
         
             
         
