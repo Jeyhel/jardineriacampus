@@ -89,7 +89,7 @@ def menuProducto():
              """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if(opcion == 1):
-            Repproducto.menu()
+            Repproducto.???menu()
         if(opcion == 2):
             CRUDproducto.menu()
         elif(opcion == 0):
