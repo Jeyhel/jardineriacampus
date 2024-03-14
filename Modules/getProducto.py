@@ -55,7 +55,7 @@ def getAllStocksPriceGama(gama, stock):
             if(opcion == 1):
                 gama = input("Ingrese la gama que deseas flictrar: ")
                 stock = int(input("Ingrese las unidades que seas mostrar: "))
-                print(tabulate(??(gama, stock), headers="keys", tablefmt="github"))
+                print(tabulate(?(gama, stock), headers="keys", tablefmt="github"))
             elif(opcion == 0):
                 break
                 

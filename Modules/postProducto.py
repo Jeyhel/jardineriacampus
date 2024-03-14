@@ -42,7 +42,7 @@ def menu():
            """)
         opcion = int(input("\nSeleccion una de las opciones: "))
         if(opcion == 1):
-            print(tabulate(postProducto???(), headers="keys", tablefmt="github"))
+            print(tabulate(postProducto??(), headers="keys", tablefmt="github"))
             input("Precione una ecla para continuar...")
         elif(opcion == 0):
             break
