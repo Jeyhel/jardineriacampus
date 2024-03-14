@@ -7,4 +7,8 @@ def getAllGama():
     return data
 
 def getAllNombre():
+      gamaNombre = []
+      for val in getAllGama():
+          gamaNombre.append(val.get("gama"))
+      return gamaNombre
     

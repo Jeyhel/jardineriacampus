@@ -3,13 +3,18 @@ from tabulate import tabulate
 import json 
 import requests
 
-
-import Storage.producto as pr
+#import Storage.producto as pr
 #gama ornametales
+
+def getAllData():
+    # json-server storage/producto.json -b 5501
+    peticion = requests.get("http://172.16.100.144:5869")
+    data = peticion.json()
+    return data
 
 def getAllStocksPriceGama(gama, stock): 
     condiciones = []
-    for val in pr.producto:
+    for val in getAllData():
         if(val.get("gama") == gama and val.get("precio_venta") >= stock):  
             condiciones.append(val)
     
@@ -46,19 +51,14 @@ def getAllStocksPriceGama(gama, stock):
           0.Regresar al menu principal 
           
         """)
-            opcion = int(input("\nSleccione una de las opciones: "))
+            opcion = int(input("\nSelecione una de las opciones: "))
             if(opcion == 1):
-                gama = input("Ingrese la gama que deseas filtrar: ")
-                stock   = int(input("Ingrese  las unidades que deseas mostrar: "))
-                print(tabulate(getAllStocksPriceGama(gama, stock), headers="keys", tablefmt="·github"))
-            elif(opcion == 2):
-                producto = {
-                    "codigo_producto": input("Ingrese el codigo del producto: "),
-                    "nombre": input("Ingrese el nombre del nombre: "),
-                    "gama":input("Ingrese la ga,ma del prodcuto : "),
-                    "dimensiones": input("Ingrese a gama del prodcuto")
-                    "proveedor": 
-                }
+                gama = input("Ingrese la gama que deseas flictrar: ")
+                stock = int(input("Ingrese las unidades que seas mostrar: "))
+                print(tabulate(getAllStocksPriceGama(gama, stock), headers="keys", tablefmt="github"))
+            elif(opcion == 0):
+                break
+                
         
             
         
