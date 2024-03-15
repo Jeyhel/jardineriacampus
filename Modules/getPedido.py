@@ -1,12 +1,25 @@
-import Storage.pedido as pe
-from datetime import datetime 
 from tabulate import tabulate
+from datetime import datetime, timedelta
+import requests
+
+def getAllPedido():
+    peticion = requests.get("http://172.16.100.144:5869")
+    data = peticion.json
+    return data 
+
+def getEstadoPedido():
+    estadoPedido = set()
+    for val in getAllPedido():
+        estadoPedido = val.get ('estado')
+        estadoPedido.add(estadoPedido)
+    return estadoPedido
+
 
 
 #punto 9
 def getAllPedidosEntregadosAtrasadosDeTiempo():
     pedidosEntregado = []
-    for val in pe.pedido:
+    for val in getAllPedidosClienteFechaEsperadaFechaDeEntrega():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado":
@@ -42,14 +55,13 @@ def getAllPedidosEntregadosAtrasadosDeTiempo():
 #diff =  end.date ()- start.date 
 #print (diff.days)
 
-
-import Storage.pedido as pe
+#import Storage.pedido as pe
 from datetime import datetime 
 
 #punto 10
 def getAllPedidosClienteFechaEsperadaFechaDeEntrega():
     pedidosEntregado = []
-    for val in pe.pedido:
+    for val in getAllPedidosClienteFechaEsperadaFechaDeEntrega():
         if val.get("estado") == "Entregado" and val.get("fecha_entrega") is None:
             val["fecha_entrega"] = val.get("fecha_esperada")
         if val.get("estado") == "Entregado": 
@@ -71,13 +83,13 @@ def getAllPedidosClienteFechaEsperadaFechaDeEntrega():
             
             
             
-import Storage.pedido as pe
+#import Storage.pedido as pe
 from datetime import datetime 
 
 #punto 11
 def getAllPedidosRechazados():
     pedidosRechazados = []
-    for val in pe.pedido:
+    for val in getAllPedidosClienteFechaEsperadaFechaDeEntrega():
         fechaRechazo = val.get("fecha_esperada")
         if val.get("estado") == "Rechazado" and fechaRechazo.startswith("2009"): 
            pedidosRechazados.append(val)
@@ -96,7 +108,7 @@ def getEstadoPedidos():
 #punto 12
 def getAllPedidosDeEnero():
     PedidosDeEnero = list()
-    for val in pe.pedido:
+    for val in getAllPedidosClienteFechaEsperadaFechaDeEntrega():
         if (val.get("estado") == "Entregado" and val.get("fecha_entrega") != None):
             FechaEntregada = "/".join(val.get("fecha_entrega").split("-")[::-1])
             start = datetime.strptime(FechaEntregada, "%d/%m/%Y")
@@ -107,12 +119,10 @@ def getAllPedidosDeEnero():
 def menu():
      while True: 
          print("""   
-    ____                        __                   __        __                             ___     __              
-   / __ \___  ____  ____  _____/ /____  _____   ____/ /__     / /___  _____   ____  ___  ____/ (_)___/ /___  _____    
-  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/  / __  / _ \   / / __ \/ ___/  / __ \/ _ \/ __  / / __  / __ \/ ___/    
- / _, _/  __/ /_/ / /_/ / /  / /_/  __(__  )  / /_/ /  __/  / / /_/ (__  )  / /_/ /  __/ /_/ / / /_/ / /_/ (__  )     
-/_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/  /_/\____/____/  / .___/\___/\__,_/_/\__,_/\____/____/      
-          /_/                                                             /_/                                   
+             
+             REPORTES 
+             DE LOS 
+             PEDIDOS 
           
           1. Pedidos entragados atrazados 
           2. 2 dias antes de la fecha esperada

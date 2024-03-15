@@ -1,5 +1,21 @@
-import Storage.oficina as of 
 from tabulate import tabulate
+from datetime import datetime, timedelta
+import requests
+
+def  getCodigoOfiCiudadName():
+    peticion = requests.get("http://172.16.100.144:5869")
+    data = peticion.json
+    return data 
+
+def getCiudadTelefonoEspaña():
+    estadoPedido = set()
+    for val in getCiudadTelefonoEspaña():
+        estadoPedido = val.get ('estado')
+        estadoPedido.add(estadoPedido)
+    return estadoPedido
+
+
+
 
 #punto 1
 def getCodigoOfiCiudadName():
@@ -29,12 +45,11 @@ def getCiudadTelefonoEspaña():
 def menu():
     while True: 
         print("""   
-    ____                        __                   __        __               _____      _            
-   / __ \___  ____  ____  _____/ /____  _____   ____/ /__     / /___ _   ____  / __(_)____(_)___  ____ _
-  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/  / __  / _ \   / / __ `/  / __ \/ /_/ / ___/ / __ \/ __ `/
- / _, _/  __/ /_/ / /_/ / /  / /_/  __(__  )  / /_/ /  __/  / / /_/ /  / /_/ / __/ / /__/ / / / / /_/ / 
-/_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/  /_/\__,_/   \____/_/ /_/\___/_/_/ /_/\__,_/  
-          /_/                                                                                          
+              
+              REPORTES 
+              DE LA 
+              OFICINA
+
           
           1. Codigo de oficina y ciudad donde hay oficinas
           2. Ciudad y telefono de las oficinas de España

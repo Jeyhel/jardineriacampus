@@ -1,4 +1,3 @@
-import  Storage.empleado as em
 from tabulate import tabulate 
 
 #punto 3 
@@ -31,10 +30,6 @@ def getAllNombreApellidoEmailJefe():
     return   nombreApellidoEmail
 
 
-
-
-import  Storage.empleado as em
-
 #punto 5
 def getAllNombreApellidoPuesto():
     nombreApellidoPuesto = []   
@@ -52,13 +47,11 @@ def getAllNombreApellidoPuesto():
 def menu():
      while True: 
          print("""  
-    ____                        __                   __        __                                   __               __          
-   / __ \___  ____  ____  _____/ /____  _____   ____/ /__     / /___  _____   ___  ____ ___  ____  / /__  ____ _____/ /___  _____
-  / /_/ / _ \/ __ \/ __ \/ ___/ __/ _ \/ ___/  / __  / _ \   / / __ \/ ___/  / _ \/ __ `__ \/ __ \/ / _ \/ __ `/ __  / __ \/ ___/
- / _, _/  __/ /_/ / /_/ / /  / /_/  __(__  )  / /_/ /  __/  / / /_/ (__  )  /  __/ / / / / / /_/ / /  __/ /_/ / /_/ / /_/ (__  ) 
-/_/ |_|\___/ .___/\____/_/   \__/\___/____/   \__,_/\___/  /_/\____/____/   \___/_/ /_/ /_/ .___/_/\___/\__,_/\__,_/\____/____/  
-          /_/                                                                            /_/                                   
-          
+
+             REPORTES 
+             DE LOS 
+             EMPLEADOS 
+             
           1.Obtener nombre y apellido del Jefe
           2.Obtener nombre, apellido y email del Jefe
           3.Obtener nombre, apellido y puesto 
