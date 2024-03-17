@@ -17,7 +17,7 @@ def postProducto():
             "precio_venta": int(input("Ingrese el precio de ventas: ")),
             "precio_proveedor": int(input("Ingrese el precio del proveedor: "))
     }
-    peticion = requests.post("http://172.16.100.144:5869", data=json.dumps(producto))
+    peticion = requests.post("http://172.16.103.33:5531", data=json.dumps(producto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"  
     return [res]
@@ -27,9 +27,9 @@ def menu():
         os.system ("clear")
         print("""   
               
-              ADMINISTRAR
-              DATOS DE 
-              PRODUCTOS 
+              A D M I N I S T R A R
+              D A T O S   D E 
+              P R O D U C T O S 
               
 
               1. Guardar un producto nuevo 

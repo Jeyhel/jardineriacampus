@@ -1,4 +1,22 @@
 from tabulate import tabulate 
+import requests
+
+def getAllEmpleado():
+    peticion = requests.get ("http://172.16.103.33:5526")
+    data = peticion.json()
+    return data
+    
+
+
+def getAllEmpleadosName():
+    empleadosName = list()
+    for val in getAllEmpleado():
+        codigoNames: dict ({ 
+            "codigoEmpleado": val.get('codigoEmpleado'),
+            "nombreCLiente": val.get("nombre")
+        })
+        empleadosName.append(codigoNames)
+    return empleadoNames
 
 #punto 3 
 def getNombreApellidoJefe():

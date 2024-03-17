@@ -1,9 +1,21 @@
 from tabulate import tabulate
 import requests
 
-def getAllcliente():
-    peticion = requests.get
-    
+
+def getAlldatacliente():
+    peticion = requests.get("http://172.16.103.33:5525")
+    data = peticion.json()
+    return data
+
+def getAllEmpleado():
+    peticion = requests.get("http://172.16.103.33:5526")
+    data = peticion.json()
+    return data
+
+def getFechaPago():
+    peticion = requests.get("http://172.16.100.144:5829")
+    data = peticion.json
+    return data 
 
 # def getAllClientsName():
 #     clienteName = list()
@@ -40,7 +52,7 @@ def getAllcliente():
 #punto 6
 def getNombreClientesEspañoles():
     getNombreClientesEspañoles = []
-    for val in cli.cliente:
+    for val in getAlldatacliente():
         if val.get('pais') == "Spain":
             getNombreClientesEspañoles.append(
                 {
@@ -52,7 +64,7 @@ def getNombreClientesEspañoles():
 # #punto 16
 def getAllClienteCiudadDeMadrid():
     ClienteCiudadDeMadrid = []
-    for val in cli.cliente:
+    for val in getAlldatacliente():
         if val.get("ciudad") == "Madrid":
             if val.get("codigo_empleado_rep_ventas") in [11, 30]:
                 ClienteCiudadDeMadrid.append(

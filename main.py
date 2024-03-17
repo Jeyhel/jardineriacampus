@@ -70,14 +70,155 @@ import Modules.postProducto as CRUDproducto
 #             #file = modulo.split(".")[-1]  # Cambio "get" por "."
 #             #print(file)
 
+import Modules.getClients as repClients
+import Modules.postClients as CRUDClients
+
+import Modules.getClients as RepEmpleado
+import Modules.postClients as CRUDEmplado
+
+import Modules.getClients as RepOficina
+import Modules.postClients as CRUDOficina
+
+import Modules.getClients as RepPago
+import Modules.postClients as CRUDPago
+
+import Modules.getClients as RepPedido
+import Modules.postClients as CRUDPedido
+
+
+
 def menuProducto():
     while True: 
         os.system ("clear")
         print(""" 
               
-              BIENVENIDO AL 
-              MENU DE 
-              PRODUCTOS
+              B I E N V E N I D O   AL 
+              M E N U    D E 
+              C L I E N T S
+              
+                                   
+               1. Reportes de los productos
+               2. Guardar, actualicar y eliminar productos
+               0. Regresar al menu principal 
+               
+             """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if(opcion == 1):
+            repClients.menu()
+        if(opcion == 2):
+            CRUDClients.menu()
+        elif(opcion == 0):
+            break
+
+
+
+def menuProducto():
+    while True: 
+        os.system ("clear")
+        print(""" 
+              
+              B I E N V E N I D O   AL 
+              M E N U    D E 
+              E M P L E A D O  
+              
+                                   
+               1. Reportes de los productos
+               2. Guardar, actualicar y eliminar productos
+               0. Regresar al menu principal 
+               
+             """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if(opcion == 1):
+            RepEmpleado.menu()
+        if(opcion == 2):
+            CRUDEmplado.menu()
+        elif(opcion == 0):
+            break
+
+
+def menuProducto():
+    while True: 
+        os.system ("clear")
+        print(""" 
+              
+              B I E N V E N I D O   AL 
+              M E N U    D E 
+              O F I C I N A 
+              
+                                   
+               1. Reportes de los productos
+               2. Guardar, actualicar y eliminar productos
+               0. Regresar al menu principal 
+               
+             """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if(opcion == 1):
+            RepOficina.menu()
+        if(opcion == 2):
+            CRUDOficina.menu()
+        elif(opcion == 0):
+            break
+
+
+
+def menuProducto():
+    while True: 
+        os.system ("clear")
+        print(""" 
+              
+              B I E N V E N I D O   AL 
+              M E N U    D E 
+              P A G O 
+              
+                                   
+               1. Reportes de los productos
+               2. Guardar, actualicar y eliminar productos
+               0. Regresar al menu principal 
+               
+             """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if(opcion == 1):
+            RepPago.menu()
+        if(opcion == 2):
+            CRUDPago.menu()
+        elif(opcion == 0):
+            break
+
+
+
+def menuProducto():
+    while True: 
+        os.system ("clear")
+        print(""" 
+              
+              B I E N V E N I D O   AL 
+              M E N U    D E 
+              P E D I D O 
+              
+                                   
+               1. Reportes de los productos
+               2. Guardar, actualicar y eliminar productos
+               0. Regresar al menu principal 
+               
+             """)
+        opcion = int(input("\nSeleccione una de las opciones: "))
+        if(opcion == 1):
+             RepPedido.menu()
+        if(opcion == 2):
+            CRUDPedido.menu()
+        elif(opcion == 0):
+            break
+
+
+
+def menuProducto():
+    while True: 
+        os.system ("clear")
+        print(""" 
+              
+              B I E N V E N I D O   A L 
+              M E N U   D E 
+              P R O D U C T O S
               
                                    
                1. Reportes de los productos
@@ -92,22 +233,30 @@ def menuProducto():
             CRUDproducto.menu()
         elif(opcion == 0):
             break
+
+
+
                       
+
+
+
+
 if(__name__ == "__main__"):
     while True:
        os.system("clear")
        print("""
              
 
-             MENU 
-             PRINICPAL 
+             M E N U 
+             P R I N I C I P A L 
              
             1.Clients 
             2.Oficina
             3.Empleado
             4.Pedidos
             5.Pago
-            6.Salir
+            6.Productos
+            7.Salir
 """)
        opcion = int(input("\nSeleccione una de las opciones: "))
        if(opcion == 1):
@@ -127,13 +276,13 @@ if(__name__ == "__main__"):
 
       # print("Presiona [ctrl + C] Para salir del programa ")
        
-#     try:
-#     opcion = int(input("seleccione una de las opciones: "))
-#         except KeyboardInterrupt:
-#             os.system("clear")
-#             print("Has salido exitosamente!")
-#             break
-#     else:
-#         if (opcion == 1):
-#             print(tabulate(getAllStocksPriceGama))
+    # try:
+    #     opcion = int(input("seleccione una de las opciones: "))
+    # except KeyboardInterrupt:
+    #         os.system("clear")
+    #         print("Has salido exitosamente!")
+    #         break
+    # else:
+    #     if (opcion == 1):
+    #         print(tabulate(getAllStocksPriceGama))
       

@@ -1,26 +1,18 @@
 from tabulate import tabulate
 from datetime import datetime, timedelta
 import requests
+import json
 
-def  getCodigoOfiCiudadName():
-    peticion = requests.get("http://172.16.100.144:5869")
-    data = peticion.json
+def getAllOfi():
+    peticion = requests.get("http://172.16.103.33:5528")
+    data = peticion.json()
     return data 
-
-def getCiudadTelefonoEspaña():
-    estadoPedido = set()
-    for val in getCiudadTelefonoEspaña():
-        estadoPedido = val.get ('estado')
-        estadoPedido.add(estadoPedido)
-    return estadoPedido
-
-
 
 
 #punto 1
 def getCodigoOfiCiudadName():
     CodigoOfCiudad = list()
-    for val in of.oficina:
+    for val in  getAllOfi():
         codigoNames = dict({
             "codigo_oficina": val.get('codigo_oficina'),
             "ciudad": val.get('ciudad')
@@ -32,7 +24,7 @@ def getCodigoOfiCiudadName():
 #punto 2
 def getCiudadTelefonoEspaña():
     ciudadTelefonoEspaña = []
-    for val in of.oficina:
+    for val in getAllOfi():
         if val.get('pais') == "España" :
             ciudadTelefonoEspaña.append(
                 {

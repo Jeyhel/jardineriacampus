@@ -3,19 +3,9 @@ from datetime import datetime, timedelta
 import requests
 
 def getFechaPago():
-    peticion = requests.get("http://172.16.100.144:5869")
+    peticion = requests.get("http://172.16.103.33:5529")
     data = peticion.json
     return data 
-
-def getAllPagoFecha():
-    estadoPedido = set()
-    for val in getAllPagoFecha():
-        estadoPedido = val.get ('estado')
-        estadoPedido.add(estadoPedido)
-    return estadoPedido
-
-
-
 
 
 

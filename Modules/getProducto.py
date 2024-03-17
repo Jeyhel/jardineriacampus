@@ -9,7 +9,7 @@ import requests
 
 def getAllData():
     # json-server storage/producto.json -b 5501
-    peticion = requests.get("http://172.16.100.144:5869")
+    peticion = requests.get("http://172.16.103.33:5531")
     data = peticion.json()
     return data
 
@@ -44,10 +44,9 @@ def menu():
                   
                   REPORTES 
                   DE LOS 
-                  PRODCUTOS
+                  PRODUCTOS
                                                  
           1.Obtener todos los productos de una categoria ordenando sus precios de venta, tambien que su cantidad de inventario sea superior (ejemplo: Ornamentales)
-          2.Guardar
           0.Regresar al menu principal 
           
         """)
