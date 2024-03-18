@@ -9,9 +9,10 @@ import requests
 
 def getAllData():
     # json-server storage/producto.json -b 5501
-    peticion = requests.get("http://172.16.103.33:5531")
-    data = peticion.json()
-    return data
+    peticion = requests.get(f"http://172.16.103.33:5531/productos/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+    # data = peticion.json()
+    # return data
 
 def getAllStocksPriceGama(gama, stock): 
     condiciones = []

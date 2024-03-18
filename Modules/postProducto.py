@@ -3,6 +3,28 @@ from tabulate import tabulate
 import json 
 import requests 
 import Modules.getGamas as gG
+import Modules.getProducto as gP
+
+
+def postProducto(id):
+    data = gP.getProductCodigo(id)
+    if(len(data)):
+        peticion = requests.delete(f"http://172.16.103.33:5531"(id)")
+        if(peticion.status == 204):
+            data.append({"menssage": "producto eliminado correctamente"})
+            return {
+                "body":data, 
+                "status": peticion.status_code,
+            }
+        else:
+            return {
+                "body": [{
+                    "mensaje": "producto no enocntrado",
+                    "id": id
+                }],
+                "status": 400,
+            }
+
 
 
 def postProducto():
@@ -33,15 +55,22 @@ def menu():
               
 
               1. Guardar un producto nuevo 
+              2. Eliminar un producto
               0. Atras
               
            """)
         opcion = int(input("\nSeleccion una de las opciones: "))
-        if(opcion == 1):
-            print(tabulate(postProducto(), headers="keys", tablefmt="github"))
-            input("Precione una tecla para continuar...")
-        elif(opcion == 0):
+        if(re.match(r'[0-9]+$', opcion)is not None):
+            opcion = int(opcion)
+        if(opcion>=0 and opcion<= 2):
+            if(opcion == 1):
+                print(tabulate(postProducto(), headers="keys", tablefmt="github"))
+            elif(opcion == 2):
+                idProducto = input("Ingrese rl id del producto que desea eliminar: ")
+                print(tabulate(deleteProducto(idProducto)["body"], headers="keys", tablefmt="github")))        elif(opcion == 0):
             break
+
+        input("Precione una tecla para continuar...")
 
 
     
