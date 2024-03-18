@@ -41,7 +41,7 @@ def menu():
 
     opcion= int(input("\nSeleccione una de las opciones: "))
     if(opcion == 1):
-        print(tabulate(postCliente(), headers="keys", tablefmt="github"))
+        print(tabulate(postClients(), headers="keys", tablefmt="github"))
         input("Presione Enter para continuar... ")
 
     elif(opcion==0):

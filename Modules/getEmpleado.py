@@ -11,17 +11,17 @@ def getAllEmpleado():
 def getAllEmpleadosName():
     empleadosName = list()
     for val in getAllEmpleado():
-        codigoNames: dict ({ 
+        codigoNames= dict ({ 
             "codigoEmpleado": val.get('codigoEmpleado'),
             "nombreCLiente": val.get("nombre")
-        })
+            })
         empleadosName.append(codigoNames)
-    return empleadoNames
+    return empleadosName
 
 #punto 3 
 def getNombreApellidoJefe():
     NombreApellidoJefe = []
-    for val in em.empleado:
+    for val in getAllEmpleado():
         if val.get('codigo_jefe') == 7 :
             NombreApellidoJefe.append(
                 {
@@ -36,7 +36,7 @@ def getNombreApellidoJefe():
 #punto 4
 def getAllNombreApellidoEmailJefe():
     nombreApellidoEmail = []
-    for val in em.empleado:
+    for val in getAllEmpleado():
          if val.get('codigo_jefe') == None:
              nombreApellidoEmail.append(
                 {
@@ -51,7 +51,7 @@ def getAllNombreApellidoEmailJefe():
 #punto 5
 def getAllNombreApellidoPuesto():
     nombreApellidoPuesto = []   
-    for val in em.empleado:
+    for val in getAllEmpleado():
         if(val.get('puesto') != "Representante Ventas"): 
              nombreApellidoPuesto.append(
                  {

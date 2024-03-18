@@ -92,7 +92,7 @@ def getAllPedidosRechazados():
 #punto 7 
 def getEstadoPedidos():
     estadosPedidos = set()
-    for val in pe.pedido:
+    for val in getAllPedido():
        estado_pedido = val.get('estado')
        estadosPedidos.add(estado_pedido)
     return estadosPedidos

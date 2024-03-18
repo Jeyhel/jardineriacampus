@@ -87,7 +87,7 @@ import Modules.postClients as CRUDPedido
 
 
 
-def menuProducto():
+def menuClientes():
     while True: 
         os.system ("clear")
         print(""" 
@@ -112,7 +112,7 @@ def menuProducto():
 
 
 
-def menuProducto():
+def menuEmpleado():
     while True: 
         os.system ("clear")
         print(""" 
@@ -136,7 +136,7 @@ def menuProducto():
             break
 
 
-def menuProducto():
+def menuOficina():
     while True: 
         os.system ("clear")
         print(""" 
@@ -161,7 +161,7 @@ def menuProducto():
 
 
 
-def menuProducto():
+def menuPago():
     while True: 
         os.system ("clear")
         print(""" 
@@ -186,7 +186,7 @@ def menuProducto():
 
 
 
-def menuProducto():
+def menuPedido():
     while True: 
         os.system ("clear")
         print(""" 
@@ -260,15 +260,15 @@ if(__name__ == "__main__"):
 """)
        opcion = int(input("\nSeleccione una de las opciones: "))
        if(opcion == 1):
-        cliente.menu()
+        menuClientes()
        elif(opcion == 2):    
-        oficina.menu()     
+        menuOficina()     
        elif(opcion == 3):  
-        empleado.menu()
+        menuEmpleado()
        elif(opcion == 4): 
-        pedidos.menu()
+        menuPedido()
        elif(opcion == 5): 
-        pago.menu()
+        menuPago()
        elif(opcion == 6): 
         menuProducto()
        elif(opcion == 7):

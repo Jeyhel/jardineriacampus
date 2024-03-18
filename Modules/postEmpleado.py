@@ -20,10 +20,10 @@ def postEmpleado():
     res["mensaje"] = "Producto Guardado"
     return [res]
 
-    def menu():
-      while True:
-       os.system("clear")
-       print(""" 
+def menu():
+    while True:
+        os.system("clear")
+        print(""" 
 
        A D M I N I S T R A R 
        D A T O S   D E    L O S 
@@ -32,13 +32,15 @@ def postEmpleado():
        1. Guardar un nuevo empleado
        0. Salir
 """)
+
 opcion= int(input("\nSeleccione una de las opciones: "))
 if(opcion == 1):
-     print(tabulate(postEmpleado(), headers="keys", tablefmt="github"))
-     input("Presione Enter para continuar... ")
-
+    print(tabulate(postEmpleado(), headers="keys", tablefmt="github"))
+    input("Presione Enter para continuar... ")
+    
 elif(opcion==0):
-    break
+    breakpoint
+
 else:
     print("Elija una opcion correcta: ")
 
