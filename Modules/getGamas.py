@@ -11,3 +11,4 @@ def getAllNombre():
       for val in getAllGama():
           gamaNombre.append(val.get("gama"))
       return gamaNombre
+

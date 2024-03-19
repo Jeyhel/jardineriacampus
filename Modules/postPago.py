@@ -1,7 +1,8 @@
 import json
 import requests
 import os
-from tabulate import tabulate 
+from tabulate import tabulate
+ 
 
 def postPago():
     pago = {
@@ -34,7 +35,7 @@ if(opcion == 1):
     input("Presione Enter para continuar... ")
 
 elif(opcion==0):
-    break
+    breakpoint 
 else:
     print("Elija una opcion correcta: ")
 
