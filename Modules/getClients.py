@@ -2,38 +2,47 @@ from tabulate import tabulate
 import requests
 
 
+
 def getAlldatacliente():
-    peticion = requests.get("http://172.16.103.33:5525")
+    peticion = requests.get(" http://154.38.171.54:5001/cliente")
     data = peticion.json()
     return data
 
 def getAllEmpleado():
-    peticion = requests.get("http://172.16.103.33:5526")
+    peticion = requests.get("http://154.38.171.54:5003/empleados")
     data = peticion.json()
     return data
 
 def getFechaPago():
-    peticion = requests.get("http://172.16.100.144:5829")
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
     data = peticion.json
     return data 
 
-# def getAllClientsName():
-#     clienteName = list()
-#     for val in cli.cliente:
-#         codigoName = dict({
-#               "codigo_cliente": val.get('codigo_cliente'),
-#               "codigo_cliente": val.get('nombre_cliente')
-#          })
-#         clienteName.append(codigoName)  
-#     return clienteName 
+def getAllClientsName():
+    clienteName = list()
+    for val in getAlldatacliente():
+        codigoName = dict({
+              "codigo_cliente": val.get('codigo_cliente'),
+              "codigo_cliente": val.get('nombre_cliente')
+         })
+        clienteName.append(codigoName)  
+    return clienteName 
 
-# def getOneClienteCodigo(codigo):
-#     for val in cli.cliente:
-#         if(val.get('codigo_cliente') == codigo):
-#             return {
-#                 "codigo_cliente": val.get('codigo_cliente'), 
-#                 "nombre_cliente": val.get('nombre_cliente')
-#              } 
+
+
+def getOneClienteCodigo(codigo):
+    for val in getAlldatacliente():
+        if(val.get('codigo_cliente') == codigo):
+            return {
+                "codigo_cliente": val.get('codigo_cliente'), 
+                "nombre_cliente": val.get('nombre_cliente')
+             } 
+        
+def getAllTelefono(telefono):
+    for val in getAlldatacliente():
+        if val.get("telefono") == telefono:
+            return [val]
+
              
   
 # def getAllClientePaisRegionCiudad(pais,region=None, ciudad=None): 

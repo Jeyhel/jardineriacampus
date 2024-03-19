@@ -2,8 +2,8 @@ from tabulate import tabulate
 from datetime import datetime, timedelta
 import requests
 
-def getFechaPago():
-    peticion = requests.get("http://172.16.103.33:5529")
+def getAllPago():
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
     data = peticion.json
     return data 
 
@@ -12,7 +12,7 @@ def getFechaPago():
 #punto 8
 def getFechaPago():
     clientesPago= set()
-    for val in getAllPagoFecha():
+    for val in getAllPago():
         fechaPagos = val.get("fecha_pago")
         if fechaPagos.startswith("2008"):
             clientesPago.add(val.get("codigo_cliente"))
@@ -23,7 +23,7 @@ def getFechaPago():
 #punto 13
 def getAllPagoFecha():
     pagoFecha = []
-    for val in getAllPagoFecha():
+    for val in getAllPago():
         if("2008") in val.get("fecha_pago") and val.get("forma_pago") == ("PayPal"):
             pagoFecha.append({
                     "codigo_de_cliente": val.get("codigo_cliente"),
@@ -40,7 +40,7 @@ def getAllPagoFecha():
 #punto 14
 def getAllFormaDePago():
     Paypal = set ()
-    for val in pag.pago:
+    for val in  getAllPago():
         FormaPago = val.get("forma_pago")
         if FormaPago not in Paypal:
             Paypal.add (FormaPago)

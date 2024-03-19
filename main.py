@@ -73,17 +73,17 @@ import Modules.postProducto as CRUDproducto
 import Modules.getClients as repClients
 import Modules.postClients as CRUDClients
 
-import Modules.getClients as RepEmpleado
-import Modules.postClients as CRUDEmplado
+import Modules.getEmpleado as RepEmpleado
+import Modules.postEmpleado as CRUDEmplado
 
-import Modules.getClients as RepOficina
-import Modules.postClients as CRUDOficina
+import Modules.getOficina as RepOficina
+import Modules.postOficina as CRUDOficina
 
-import Modules.getClients as RepPago
-import Modules.postClients as CRUDPago
+import Modules.getPago as RepPago
+import Modules.postPago as CRUDPago
 
-import Modules.getClients as RepPedido
-import Modules.postClients as CRUDPedido
+import Modules.getPedido as RepPedido
+import Modules.getPedido as CRUDPedido
 
 
 

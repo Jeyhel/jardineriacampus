@@ -6,13 +6,16 @@ import requests
 
 #import Storage.producto as pr
 #gama ornametales
-
 def getAllData():
-    # json-server storage/producto.json -b 5501
-    peticion = requests.get(f"http://172.16.103.33:5531/productos/{codigo}")
+     peticion = requests.get(" http://154.38.171.54:5008/productos")
+     data = peticion.json()
+     return data
+ 
+ 
+def getProductoCodigo(codigo):
+    peticion = requests.get("http://154.38.171.54:5008/productos/{codigo}")
     return [peticion.json()] if peticion.ok else []
-    # data = peticion.json()
-    # return data
+    
 
 def getAllStocksPriceGama(gama, stock): 
     condiciones = []

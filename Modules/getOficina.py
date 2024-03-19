@@ -4,7 +4,7 @@ import requests
 import json
 
 def getAllOfi():
-    peticion = requests.get("http://172.16.103.33:5528")
+    peticion = requests.get(" http://154.38.171.54:5005/oficinas")
     data = peticion.json()
     return data 
 

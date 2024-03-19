@@ -5,6 +5,151 @@ from tabulate import tabulate
 import re 
 import Modules.getClients as getcli 
 
+def guardarCliente():
+
+    cliente = dict()
+    while True:
+        try:
+            
+            #CODIGO CLIENTE
+            
+            if not cliente.get("codigo_cliente"):
+                codigo = input("ingrese el codigo del cliente: ")
+                if re.match(r'^[0-9]+$', codigo) is not None:
+                    codigo = int(codigo)
+                    if getcli.getOneClienteCodigo(codigo):
+                        raise Exception("el codio del cliente ya existe")
+                    else:
+                        cliente["codigo_cliente"] = codigo
+                else:
+                    raise Exception ("el codigo ingresado no es valido, ingrese solo digitos numericos, por favor. ")
+                    
+            
+             #NOMBRE CLIENTE
+             
+            if not cliente.get("nombre_cliente"):
+               nombre_cliente = input(f"Ingrese el nombre del cliente: ")
+               if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', nombre_cliente) is not None:
+                    cliente["nombre_cliente"] = nombre_cliente
+               else:
+                    raise Exception("Por favor ingrese de nuevo el nombre, recuerde que la palabra debe iniciar con mayúscula.")
+            
+            #NOMBRE CONTACTO
+            
+            if not cliente.get("nombre_contacto"):
+                nombre_contacto= input("ingrese el nombre del contacto: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',nombre_contacto) is not None:
+                    cliente["nombre_contacto"]= nombre_contacto
+                else:
+                    raise Exception("el nombre no es valido,por favor inicie todas las palabras con mayuscula")
+             
+            #APELLIDO CONTACTO
+            
+            if not cliente.get("apelllido_contacto"):
+                apelllido_contacto = input("ingrese el apellido  del contacto: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',apelllido_contacto) is not None:
+                    cliente["apelllido_contacto"]= apelllido_contacto
+                else:
+                    raise Exception("el apellido ingresado no es valido,por favor inicie todas las palabras con mayuscula")
+            
+               
+            # TELEFONO 
+            
+            if not cliente.get("telefono"):
+                telefono= input("ingrese el numero de telefono: ")
+                if re.match(r'^\d{1,3} ?\d{4}-?\d{4}$',telefono) is not None:
+                    if getcli.getAllTelefono(telefono):
+                         raise Exception("el telefono ingresado ya existe")
+                    else:
+                        cliente["telefono"] = telefono
+                else:
+                    raise Exception ("Telefono no valido, ejm: 845210369 o 5 5487-8745 ")
+                
+            #FAX
+            
+            if not cliente.get("fax"):
+                fax = input("ingrese el fax : ")
+                if re.match(r'^\d{1,3} ?\d{4}-?\d{4}$',fax) is not None:
+                    cliente["fax"]= fax
+                else:
+                    raise Exception("el fax ingresado no es valido")
+                
+            #LINEA DIRECCION 1
+            
+            if not cliente.get("linea_direccion1"):
+                linea_direccion1 = input("ingrese  la linea_direccion1 : ")
+                cliente["linea_direccion1"]= linea_direccion1
+              
+              
+            #LINEA DIRECCION 2
+            
+            if not cliente.get("linea_direccion2"):
+                linea_direccion2 = input("ingrese  la linea_direccion2 : ")
+                cliente["linea_direccion2"]= linea_direccion2
+                
+            
+            #CIUDAD
+            
+            if not cliente.get("ciudad"):
+                ciudad = input("ingrese la ciudad: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',ciudad) is not None:
+                    cliente["ciudad"]= ciudad
+                else:
+                    raise Exception("la ciudad ingresada no es valida")
+                
+            #REGION
+            
+            if not cliente.get("region"):
+                region= input("ingrese la region: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',region) is not None:
+                    cliente["region"]= region
+                else:
+                    raise Exception("la region ingresada no es valida")
+                
+            #PAIS
+            
+            if not cliente.get("pais"):
+                pais= input("ingrese  el pais: ")
+                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',pais) is not None:
+                    cliente["pais"]= pais
+                else:
+                    raise Exception("el pais ingresado no es valido")
+                
+            #CODIGO POSTAL
+            
+            if not cliente.get("codigo_postal"):
+                codigo_postal = input("Ingrese el Codigo postal: ")
+                if re.match(r'^\d{4,5}$', codigo_postal) is not None:
+                    cliente["codigo_postal"] = codigo_postal
+                else:
+                    raise Exception("Codigo postal no valido, asegurese de ingresar 4 o 5 dígitos numéricos")
+            
+            
+            #CODIGO EMPLEADO REP VENTAS
+        
+            if not cliente.get("codigo_empleado_rep_ventas"):
+                codigo_empleado_rep_ventas = input(f"Escriba el codigo del representante de ventas: ")
+                if re.match(r'^[0-9]+$', codigo_empleado_rep_ventas) is not None:
+                    codigo_empleado_rep_ventas = int(codigo_empleado_rep_ventas)
+                    cliente["codigo_empleado_rep_ventas"] = codigo_empleado_rep_ventas
+                else:
+                    raise Exception("Codigo ingresado no valido,por favor ingresar solo dígitos numéricos")
+            
+            
+            #LIMITE CREDITO
+                
+            if not cliente.get("limite_credito"):
+                limite_credito = input(f"Escriba el limite de credito: ")
+                if re.match(r'^[0-9]+$', limite_credito) is not None:
+                    limite_credito = float(limite_credito)
+                    cliente["limite_credito"] = limite_credito
+                    break
+                else:
+                    raise Exception("Limite de credito  no valido, por favor ingresar solo dígitos numéricos")
+                                   
+        except Exception as error:
+            print(error)
+
 
 
 # def postClients():
@@ -26,214 +171,10 @@ import Modules.getClients as getcli
 #         }
     
     
-    # peticion = requests.post("http://172.16.103.33:5525", data = json.dumps(cliente, indent =4).encode("UTF-8"))
-    # res=peticion.json()
-    # res["mensaje"] = "Producto Guardado"
-    # return[res]
-
-def agregarDatosClientes():
-    Clientes={}
-    while True:
-        try:
-
-
-            # expresion regulat que tenga en cuenta escribir un numero solamente
-            if not Clientes.get("codigo_cliente"):
-                codigoCliente=input("Ingresa el codigo del cliente: ")
-                if (re.match(r'^\d+$',codigoCliente)is not None):
-                    codigoCliente= int(codigoCliente)
-                    Data=getcli.getclientFormClient(codigoCliente)
-                    if(Data):
-                        print(tabulate(Data, headers="keys",tablefmt="grid"))
-                        raise Exception("El código ya existe")
-                        #break # el break se deja solo para el ultimo modulo sino se rompe toda la cadena
-                else:
-                    Clientes["codigo_cliente"]=codigoCliente
-                    print("El codigo del cliente cumple con el estandar, OK")
-
-
-
-        
-
-            if not Clientes.get("nombre_cliente"):
-                nombreCliente =input("Ingresa un nombre a la empresa: ")
-                if(re.match(r'\w+',nombreCliente)is not None):
-                    Clientes["nombre_cliente"]=nombreCliente
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                
-
-
-            # expresion regular que tenga en cuenta la escritura de una palabra con la primera en mayuscula y el resto en minuscula
-
-            if not Clientes.get("nombre_contacto"):
-                nombreCliente =input("Ingresa un nombre de representante de la empresa(ejemplo: Juan): ")
-                if(re.match(r'^[A-Z][a-z]*$',nombreCliente)is not None):
-                    Clientes["nombre_contacto"]=nombreCliente
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                
-
-            if not Clientes.get("apellido_contacto"):
-                nombreCliente =input("Ingresa el apellido de representante de la empresa(ejemplo: Alberto): ")
-                if(re.match(r'^[A-Z][a-z]*$',nombreCliente)is not None):
-                    Clientes["apellido_contacto"]=nombreCliente
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                
-
-
-            # expresion regular que tenga en cuenta la escritura de un numero de 9 digitos
-            if not Clientes.get("telefono"):
-                telefono=input("Ingresa el teléfono del cliente(000000000): ")
-                if(re.match(r'^\d{10}$',telefono)is not None):
-                    Data=getcli.getTelFromTelclient(telefono)
-                    if(Data):
-                        print(tabulate(Data, headers="keys",tablefmt="grid"))
-                        raise Exception("El telefono del cliente ya existe")
-                        #break #solo para el ultimo modulo sino se rompe
-                    else:
-                        Clientes["telefono"]=telefono
-                        print("El dato cumple con el estandar,OK")
-
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-                
-
-
-            
-            if not Clientes.get("fax"):
-                fax=input("Ingresa el fax del cliente(000000000): ")
-                if(re.match(r'^\d{9}$',fax)is not None):
-                    Data=getcli.getfaxfromfax(fax)
-                    if(Data):
-                        print(tabulate(Data, headers="keys",tablefmt="grid"))
-                        raise Exception("El fax del cliente ya existe")
-                        #break #solo para el ultimo modulo sino se rompe
-                    else:
-                        Clientes["fax"]=fax
-                        print("El dato cumple con el estandar,OK")
-
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-
-
-
-
-            # expresion que tenga en cuenta la escritura de una direccion 
-            if not Clientes.get("linea_direccion1"):
-                direccion1=input("Ingresa la primera direccion del cliente: ")
-                if(re.match(r'\w+',direccion1)is not None):
-                    Data=getcli.getDireccion1FromDireccion(direccion1)
-                    if(Data):
-                        print(tabulate(Data, headers="keys",tablefmt="grid"))
-                        raise Exception("la dirección ya existe")
-                        #break #solo para el ultimo modulo sino se rompe
-                    else:
-                        Clientes["linea_direccion1"]=direccion1
-                        print("El dato cumple con el estandar,OK")
-
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-                
-
-
-
-            if not Clientes.get("linea_direccion2"):
-                direccion2=input("Ingresa la segunda direccion del cliente: ")
-                if(re.match(r'\w+',direccion2)is not None):
-                    Data=getcli.getDireccion2FromDireccion(direccion2)
-                    if(Data):
-                        print(tabulate(Data, headers="keys",tablefmt="grid"))
-                        raise Exception("La dirección ya existe")
-                        #break #solo para el ultimo modulo sino se rompe
-                    else:
-                        Clientes["linea_direccion2"]=direccion2
-                        print("El dato cumple con el estandar,OK")
-
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-
-
-            # expresion regular que tenga en cuenta una palabra con mayuscula al principio,o  que pueda ser toda mayuscula, o que pueda tener un guion, que puedan ser varias palabras, que pueda tener numeros ni caracteres especiales
-            if not Clientes.get("ciudad"):
-                ciudad =input("Ingresa la ciudad del cliente: ")
-                if(re.match(r'^([A-ZÁÉÍÓÚÜ][a-záéíóúü]*-?)+[A-ZÁÉÍÓÚÜ]?[a-záéíóúü]*$',ciudad)is not None):
-                    Clientes["ciudad"]=ciudad
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-
-
-
-            if not Clientes.get("pais"):
-                pais =input("Ingresa el país del cliente: ")
-                if(re.match(r'^([A-ZÁÉÍÓÚÜ][a-záéíóúü]*-?)+[A-ZÁÉÍÓÚÜ]?[a-záéíóúü]*$',pais)is not None):
-                    Clientes["pais"]=pais
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-                
-
-
-            
-            if not Clientes.get("region"):
-                region =input("Ingresa la región del cliente: ")
-                if(re.match(r'^([A-ZÁÉÍÓÚÜ][a-záéíóúü]*-?)+[A-ZÁÉÍÓÚÜ]?[a-záéíóúü]*$',region)is not None):
-                    Clientes["region"]=region
-                    print("El dato cumple con el estandar,OK")
-                    # break #solo para el ultimo modulo sino se rompe
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-
-
-
-            #expresion regular que tenga en cuenta la escritura de numeros solamente, o que escriba unas letras(obligatorio en mayuscula) junto con numeros separados por un espacio, o que pueda ser un numero seguido de un guión y luego más numeros todo pegado
-            if not Clientes.get("codigo_postal"):
-                codigoPostal =input("Ingresa el código postal del cliente(00000): ")
-                if(re.match(r'^\d{5}$',codigoPostal)is not None):
-                    Clientes["codigo_postal"]=codigoPostal
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-
-
-            # expresion regular que tenga en cuenta la escritura de un numero 
-            if not Clientes.get("codigo_empleado_rep_ventas"):
-                codigoEmpleado =input("Ingresa el código del representante de ventas del cliente: ")
-                if(re.match(r'^\d+$',codigoEmpleado)is not None):
-                    codigoEmpleado=int(codigoEmpleado)
-                    Clientes["codigo_empleado_rep_ventas"]=codigoEmpleado
-                    print("El dato cumple con el estandar,OK")
-                    #break #solo para el ultimo modulo sino se rompe
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido")
-                
-
-            if not Clientes.get("limite_credito"):
-                limiteCredito =input("Ingresa el límite de crédito del cliente: ")
-                if(re.match(r'^\d+$',limiteCredito)is not None):
-                    limiteCredito=float(limiteCredito)
-                    Clientes["limite_credito"]=limiteCredito
-                    print("El dato cumple con el estandar,OK")
-                    break #solo para el ultimo modulo sino se rompe
-                else:
-                    raise Exception("El dato no cumple con el estandar establecido") 
-
-
-
-        except Exception as error:
-            print(error)
-   
-
-    headers = {'Content-type': 'application/json', 'charset': 'UTF-8'}
-    peticion = requests.post("http://172.16.104.15:5002",headers=headers, data=json.dumps(Clientes, indent=4).encode("UTF-8"))
-    res = peticion.json()
-    res["Mensaje"] = "Producto Guardado"
-    return [res]
+    peticion = requests.post(" http://154.38.171.54:5001/cliente", data = json.dumps(cliente, indent =4).encode("UTF-8"))
+    res=peticion.json()
+    res["mensaje"] = "Producto Guardado"
+    return[res]
 
 
 
@@ -253,8 +194,8 @@ def menu():
 
     opcion= int(input("\nSeleccione una de las opciones: "))
     if(opcion == 1):
-        print(tabulate(agregarDatosClientes(), headers="keys", tablefmt="github"))
-        input("Presione Enter para continuar... ")
+       print(tabulate(guardarCliente(),headers="keys",tablefmt="github"))
+       input("Presione Enter para continuar... ")
 
     elif(opcion==0):
        break

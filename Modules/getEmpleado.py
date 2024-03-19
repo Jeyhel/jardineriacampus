@@ -2,10 +2,14 @@ from tabulate import tabulate
 import requests
 
 def getAllEmpleado():
-    peticion = requests.get ("http://172.16.103.33:5526")
+    peticion = requests.get ("http://154.38.171.54:5003/empleados")
     data = peticion.json()
     return data
     
+def getcodigoEmpleado(codigo):
+    peticion = requests.get("http://154.38.171.54:5003/empleados/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+
 
 
 def getAllEmpleadosName():
