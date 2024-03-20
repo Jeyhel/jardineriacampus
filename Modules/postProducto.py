@@ -2,7 +2,7 @@ import os
 from tabulate import tabulate 
 import json 
 import requests 
-import Modules.getProducto as gP
+import Modules.getProducto as getPro
 import re
 
 def GuardarProducto():
@@ -17,7 +17,7 @@ def GuardarProducto():
             if not producto.get("codigo_producto"):
              codigo = input("Ingrese el codigo del producto: ")
             if re.match(r'^[A-Z]{2}-\d{3}$', codigo) is not None:
-                if gP.getProductoCodigo(codigo):
+                if getPro.getProductoCodigo(codigo):
                     raise Exception("El codigo ingresado ya existe.")
                 else:
                     producto["codigo_producto"] = codigo
@@ -105,7 +105,7 @@ def GuardarProducto():
 
 
 def DeleteProducto(id):
-    data = gP.getProductoCodigooo(id)
+    data = getPro.getProductoCodigooo(id)
     if len(data):
         peticion = requests.delete("http://154.38.171.54:5008/productos/{id}")
         if peticion.status_code == 204:
@@ -145,16 +145,16 @@ def DeleteProducto(id):
 #             }
 
 
-    if(__name__ == "main"):
-        with open("storage/producto.json", "r") as f:
-            fichero = f.read()
-            data = json.loads(fichero)
-            for i, val in enumerate(data):
-                data[i]["id"] = (i+1)
-            data=json.dumps(data, indent=4).encode("utf-8")
-            with open("storage/producto.json", "wb+") as f1:
-                f1.write(data)
-                f1.close()
+    # if(__name__ == "main"):
+    #     with open("storage/producto.json", "r") as f:
+    #         fichero = f.read()
+    #         data = json.loads(fichero)
+    #         for i, val in enumerate(data):
+    #             data[i]["id"] = (i+1)
+    #         data=json.dumps(data, indent=4).encode("utf-8")
+    #         with open("storage/producto.json", "wb+") as f1:
+    #             f1.write(data)
+    #             f1.close()
 
     # peticion = requests.post("http://172.16.103.33:5531"), data=json.dumps(producto, indent =4).encode("UTF-8"))
     # res = peticion.json()

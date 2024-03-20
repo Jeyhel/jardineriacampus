@@ -16,7 +16,7 @@ def GuardarEmpleado():
                 codigo = input("ingrese el codigo del empleado")
                 if re.match(r'^[0-9]+$', codigo) is not None:
                     codigo_empleado = int(codigo)
-                    GFGF = getEmp.getallempleCode(codigo)
+                    GFGF = getEmp.getcodigoEmpleado(codigo)
                     if GFGF:
                         raise Exception("El codigo ingresado ya existe.")
                     else:
@@ -111,14 +111,14 @@ def GuardarEmpleado():
                 
             
     peticion = requests.get("http://154.38.171.54:5003/empleados",data=json.dumps(empleado, indent=4).encode("UTF-8"))
-    res = peticion.json.json()
+    res = peticion.json()
     res["mensaje"] = "Empleado guardado exitosamnete"
     return[res]
 
 
 
 def DeleteEmpleado(id):
-    data = getEmp.getcodigoEmpleado(id)
+    data = getEmp.getEmpleadoId(id)
     if len(data):
         peticion = requests.delete("http://154.38.171.54:5003/empleados/{id}")
         if peticion.status_code == 204:
@@ -148,17 +148,22 @@ def menu():
        E M P L E A D O S
 
        1. Guardar un nuevo empleado
+       2. Borrar un empleado
        0. Salir
-""")
+        """)
 
-opcion= int(input("\nSeleccione una de las opciones: "))
-if(opcion == 1):
-    print(tabulate(GuardarEmpleado(), headers="keys", tablefmt="github"))
-    input("Presione Enter para continuar... ")
-    
-elif(opcion==0):
-    breakpoint
+        opcion= int(input("\nSeleccione una de las opciones: "))
+        if(opcion == 1):
+            print(tabulate(GuardarEmpleado(), headers="keys", tablefmt="github"))
+            input("Presione Enter para continuar... ")
+        
+        elif(opcion == 2):
+            print(tabulate(DeleteEmpleado(id), headers="keys", tablefmt="github"))
+            input("Presione Enter para continuar... ")
 
-else:
-    print("Elija una opcion correcta: ")
+        elif(opcion==0):
+            break
+
+        else:
+            print("Elija una opcion correcta: ")
 

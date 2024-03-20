@@ -1,14 +1,14 @@
-import os 
-#rom tabulate import tabulate
+from tabulate import tabulate
+import os
 import Modules.getClients as cliente 
 import Modules.getOficina as oficina 
 import Modules.getEmpleado as empleado  
 import Modules.getPedido as pedidos
 import Modules.getPago as pago 
 #import Modules.getGamas as gama
-import Modules.getProducto as Repproducto
-import Modules.postProducto as CRUDproducto
+
 #import sys
+
 
 
  
@@ -70,7 +70,7 @@ import Modules.postProducto as CRUDproducto
 #             #file = modulo.split(".")[-1]  # Cambio "get" por "."
 #             #print(file)
 
-import Modules.getClients as repClients
+import Modules.getClients as RepClients
 import Modules.postClients as CRUDClients
 
 import Modules.getEmpleado as RepEmpleado
@@ -85,6 +85,8 @@ import Modules.postPago as CRUDPago
 import Modules.getPedido as RepPedido
 import Modules.getPedido as CRUDPedido
 
+import Modules.getProducto as Repproducto
+import Modules.postProducto as CRUDproducto
 
 
 def menuClientes():
@@ -92,7 +94,7 @@ def menuClientes():
         os.system ("clear")
         print(""" 
               
-              B I E N V E N I D O   AL 
+              B I E N V E N I D O   A L 
               M E N U    D E 
               C L I E N T S
               
@@ -104,7 +106,7 @@ def menuClientes():
              """)
         opcion = int(input("\nSeleccione una de las opciones: "))
         if(opcion == 1):
-            repClients.menu()
+            RepClients.menu()
         if(opcion == 2):
             CRUDClients.menu()
         elif(opcion == 0):
@@ -117,7 +119,7 @@ def menuEmpleado():
         os.system ("clear")
         print(""" 
               
-              B I E N V E N I D O   AL 
+              B I E N V E N I D O   A L 
               M E N U    D E 
               E M P L E A D O  
               
@@ -234,45 +236,39 @@ def menuProducto():
         elif(opcion == 0):
             break
 
-
-
-                      
-
-
-
-
 if(__name__ == "__main__"):
-    while True:
-       os.system("clear")
-       print("""
+        while True:
+            os.system("clear")
+            print("""
              
 
-             M E N U 
-             P R I N I C I P A L 
-             
-            1.Clients 
-            2.Oficina
-            3.Empleado
-            4.Pedidos
-            5.Pago
-            6.Productos
-            7.Salir
+                M E N U 
+                P R I N I C I P A L 
+                
+                1.Clients 
+                2.Oficina
+                3.Empleado
+                4.Pedidos
+                5.Pago
+                6.Productos
+                7.Salir
 """)
-       opcion = int(input("\nSeleccione una de las opciones: "))
-       if(opcion == 1):
-        menuClientes()
-       elif(opcion == 2):    
-        menuOficina()     
-       elif(opcion == 3):  
-        menuEmpleado()
-       elif(opcion == 4): 
-        menuPedido()
-       elif(opcion == 5): 
-        menuPago()
-       elif(opcion == 6): 
-        menuProducto()
-       elif(opcion == 7):
-        break
+            opcion = int(input("\nSeleccione una de las opciones: "))
+            if(opcion == 1):
+                menuClientes()
+            elif(opcion == 2):    
+                menuOficina()     
+            elif(opcion == 3):  
+                menuEmpleado()
+            elif(opcion == 4): 
+                menuPedido()
+            elif(opcion == 5): 
+                menuPago()
+            elif(opcion == 6): 
+                menuProducto()
+            elif(opcion == 7):
+                break
+
 
       # print("Presiona [ctrl + C] Para salir del programa ")
        

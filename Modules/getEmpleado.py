@@ -7,10 +7,12 @@ def getAllEmpleado():
     return data
     
 def getcodigoEmpleado(codigo):
-    peticion = requests.get("http://154.38.171.54:5003/empleados/{codigo}")
+    peticion = requests.get(f"http://154.38.171.54:5003/empleados/{codigo}")
     return [peticion.json()] if peticion.ok else []
 
-
+def getEmpleadoId(id):
+    peticion = requests.get(f"http://154.38.171.54:5003/empleados/{id}")
+    return [peticion.json()] if peticion.ok else []
 
 def getAllEmpleadosName():
     empleadosName = list()
