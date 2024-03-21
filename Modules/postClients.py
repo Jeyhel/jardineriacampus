@@ -4,7 +4,7 @@ import os
 from tabulate import tabulate 
 import re 
 import Modules.getClients as getcli 
-
+import Modules.UpdateClients as upCli
 def guardarCliente():
 
     cliente = dict()
@@ -227,7 +227,8 @@ def menu():
         idCliente = input("Ingrese el id del cliente que desea eliminar: ")
         print(tabulate(DeleteClientes(idCliente),headers="keys",tablefmt="github"))
     
-    
+    elif opcion==3:
+            upCli.menu()
         
 
     elif(opcion==0):

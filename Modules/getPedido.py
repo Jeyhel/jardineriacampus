@@ -15,6 +15,13 @@ def getcodigoPedido(codigo):
     peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{codigo}")
     return [peticion.json()] if peticion.ok else []
 
+def getPedidoCodigos(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos?codigo_pedido={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+
 
 #punto 9
 def getAllPedidosEntregadosAtrasadosDeTiempo():

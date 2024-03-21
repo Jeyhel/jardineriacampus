@@ -5,6 +5,8 @@ from tabulate import tabulate
 #import Modules.getClients as getCli
 import re
 import Modules.getPago as getPag
+import Modules.UpdatePago as upPa
+import Modules.UpdateProducto as upPro
 
 def GuardarPago():
     pago = dict ()
@@ -123,6 +125,10 @@ def menu():
         elif(opcion == 2):
             idPago= input("Ingrese el id del empleado que desea eliminar: ")
             print(tabulate(DeletePago(idPago), headers="keys", tablefmt="github"))
+        
+         
+        elif opcion==3:
+            upPa.menu()
                     
         elif(opcion==0):
             break

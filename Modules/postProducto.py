@@ -3,6 +3,7 @@ from tabulate import tabulate
 import json 
 import requests 
 import Modules.getProducto as getPro
+import Modules.UpdateProducto as upPro
 import re
 
 def GuardarProducto():
@@ -155,7 +156,10 @@ def menu():
         if opcion == 2:
             idProducto = input("Ingrese el id del producto: ")
             print(tabulate(DeleteProducto(idProducto), headers="keys", tablefmt="github"))
-            
+        
+        if opcion==3:
+            upPro.menu()
+        
         if opcion  == 0:
             break
         

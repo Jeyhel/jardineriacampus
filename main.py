@@ -100,7 +100,7 @@ def menuClientes():
               
                                    
                1. Reportes de los productos
-               2. Guardar, actualicar y eliminar productos
+               2. Guardar, actualizar y eliminar productos
                0. Regresar al menu principal 
                
              """)
@@ -125,7 +125,7 @@ def menuEmpleado():
               
                                    
                1. Reportes de los productos
-               2. Guardar, actualicar y eliminar productos
+               2. Guardar, actualizar y eliminar productos
                0. Regresar al menu principal 
                
              """)
@@ -149,7 +149,7 @@ def menuOficina():
               
                                    
                1. Reportes de los productos
-               2. Guardar, actualicar y eliminar productos
+               2. Guardar, actualizar y eliminar productos
                0. Regresar al menu principal 
                
              """)
@@ -174,7 +174,7 @@ def menuPago():
               
                                    
                1. Reportes de los productos
-               2. Guardar, actualicar y eliminar productos
+               2. Guardar, actualizar y eliminar productos
                0. Regresar al menu principal 
                
              """)
@@ -199,7 +199,7 @@ def menuPedido():
               
                                    
                1. Reportes de los productos
-               2. Guardar, actualicar y eliminar productos
+               2. Guardar, actualizar y eliminar productos
                0. Regresar al menu principal 
                
              """)
@@ -224,7 +224,7 @@ def menuProducto():
               
                                    
                1. Reportes de los productos
-               2. Guardar, actualicar y eliminar productos
+               2. Guardar, actualizar y eliminar productos
                0. Regresar al menu principal 
                
              """)

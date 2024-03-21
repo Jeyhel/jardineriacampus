@@ -14,6 +14,13 @@ def getcodigoEmpleado(codigo):
     peticion = requests.get(f"http://154.38.171.54:5003/empleados/{codigo}")
     return [peticion.json()] if peticion.ok else []
 
+def getProductoCodigos(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5003/empleados/{codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+
 
 def getAllEmpleadosName():
     empleadosName = list()

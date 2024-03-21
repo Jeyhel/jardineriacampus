@@ -16,7 +16,12 @@ def getAllOficina(codigo):
     peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{codigo}")
     return [peticion.json()] if peticion.ok else []
 
-
+def getProductoCodigos(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
 
 
 #punto 1

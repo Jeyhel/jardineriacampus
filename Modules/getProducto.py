@@ -28,7 +28,12 @@ def getAllProveedorr ():
            Nombre_proveedor.append(val)
     return Nombre_proveedor
 
-    
+def getProductoCodigos(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5008/productos?codigo_producto={codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
 
 def getAllStockPriceGama(gama, stock):
     condiciones = []

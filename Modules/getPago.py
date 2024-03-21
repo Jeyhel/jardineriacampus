@@ -23,6 +23,15 @@ def getAllITransaId(id_transaccion):
     peticion = requests.get(f"http://154.38.171.54:5006/pagos/{id_transaccion}")
     return [peticion.json()] if peticion.ok else []
 
+
+def getProductoCodigos(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{codigo.upper()}")
+    data = peticion.json()
+    if(data)== 0:
+        data=None
+    return data
+
+
 #punto 8
 def getFechaPago():
     clientesPago= set()

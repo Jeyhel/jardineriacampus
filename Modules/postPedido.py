@@ -5,6 +5,7 @@ from tabulate import tabulate
 import Modules.getPedido as getPed
 import Modules.getClients as getCli
 import re
+import Modules.UpdatePedido as upPedi
 
 def guardarPedido():
     pedido = dict()
@@ -126,6 +127,11 @@ def menu():
     elif(opcion == 2):
         idPedido= input("Ingrese el id del empleado que desea eliminar: ")
         print(tabulate(DeletePedido(idPedido), headers="keys", tablefmt="github"))
+    
+    elif(opcion == 3):
+        
+        upPedi.menu()
+
 
     elif(opcion==0):
        break
