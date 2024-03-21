@@ -4,7 +4,7 @@ import os
 from tabulate import tabulate
 import re 
 import Modules.getEmpleado as getEmp
-import Modules.UpdateOficina as upEmp
+import Modules.UpdateEmpleado as upEmp
 
 def GuardarEmpleado():
     empleado = dict ()
@@ -17,7 +17,7 @@ def GuardarEmpleado():
                 codigo = input("ingrese el codigo del empleado: ")
                 if re.match(r'^[0-9]+$', codigo) is not None:
                     codigo_empleado = int(codigo)
-                    blah = getEmp.getcodigoEmpleado(codigo)
+                    blah = getEmp.getcodigoEmpleado000(codigo)
                     if blah:
                         raise Exception("El codigo ingresado ya existe.")
                     else:

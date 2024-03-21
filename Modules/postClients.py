@@ -17,12 +17,12 @@ def guardarCliente():
                 codigo = input("ingrese el codigo del cliente: ")
                 if re.match(r'^[0-9]+$', codigo) is not None:
                     codigo = int(codigo)
-                    if getcli.getOneClienteCodigo(codigo):
-                        raise Exception("el codio del cliente ya existe")
+                    if getcli.getClienteCodigos(codigo):
+                        raise Exception("el codigo del cliente ya existe")
                     else:
                         cliente["codigo_cliente"] = codigo
                 else:
-                    raise Exception ("el codigo ingresado no es valido, ingrese solo digitos numericos, por favor. ")
+                    raise Exception ("El codigo ingresado no es valido, ingrese solo digitos numericos, por favor. ")
                     
             
              

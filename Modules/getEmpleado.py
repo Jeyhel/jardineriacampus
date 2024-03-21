@@ -10,16 +10,17 @@ def getEmpleadoId(id):
     peticion = requests.get(f"http://154.38.171.54:5003/empleados/{id}")
     return [peticion.json()] if peticion.ok else []
 
-def getcodigoEmpleado(codigo):
+def getcodigoEmpleado000(codigo):
     peticion = requests.get(f"http://154.38.171.54:5003/empleados/{codigo}")
     return [peticion.json()] if peticion.ok else []
 
-def getProductoCodigos(codigo):
+def getEmpleadoCodigos(codigo):
     peticion = requests.get(f"http://154.38.171.54:5003/empleados/{codigo.upper()}")
     data = peticion.json()
     if(data)== 0:
         data=None
     return data
+
 
 
 def getAllEmpleadosName():

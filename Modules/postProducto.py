@@ -13,7 +13,7 @@ def GuardarProducto():
             
              #CODIGO
             if not producto.get("codigo_producto"):
-                codigo = input("Ingrese el codigo del prodcucto: ")
+                codigo = input("Ingrese el codigo del producto: ")
                 if re.match(r'^[A-Z]{2}-\d{3}$', codigo) is not None:
                     if getPro.getProductoCodigo(codigo):
                         raise Exception("El codigo ingresado ya existe.")
@@ -89,10 +89,10 @@ def GuardarProducto():
                 
             #PROVEEDOR    
             if not producto.get("precio_proveedor"):
-                PrecioProveedor = input("Ingrese el precio del proveedor: ")
-                if re.match(r'^[0-9]+$', PrecioProveedor) is not None:
-                    PrecioProveedor = int(PrecioProveedor)
-                    producto["precio_proveedor"] = PrecioProveedor
+                PrecioProveedorr = input("Ingrese el precio del proveedor: ")
+                if re.match(r'^[0-9]+$', PrecioProveedorr) is not None:
+                    PrecioProveedorr = int(PrecioProveedorr)
+                    producto["precio_proveedor"] = PrecioProveedorr
                     break
                 else:
                     raise Exception("Precio de proveedor no valido, porfavor solo dígitos numéricos.")

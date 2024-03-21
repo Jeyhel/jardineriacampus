@@ -9,7 +9,7 @@ import time
 def updateClienteNombre(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -36,7 +36,7 @@ def updateClienteNombre(codigo):
 def updateClienteNombreContacto(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -64,7 +64,7 @@ def updateClienteNombreContacto(codigo):
 def updateClienteApellidoContacto(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -92,7 +92,7 @@ def updateClienteApellidoContacto(codigo):
 def updateClienteTelefono(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -119,7 +119,7 @@ def updateClienteTelefono(codigo):
 def updateClienteFax(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -146,7 +146,7 @@ def updateClienteFax(codigo):
 def updateClienteLineaDireccion1(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -173,7 +173,7 @@ def updateClienteLineaDireccion1(codigo):
 def updateClienteLineaDireccion2(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -200,7 +200,7 @@ def updateClienteLineaDireccion2(codigo):
 def updateClienteCiudad(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -228,7 +228,7 @@ def updateClienteCiudad(codigo):
 def updateClienteRegion(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -255,7 +255,7 @@ def updateClienteRegion(codigo):
 def updateClientePais(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -282,7 +282,7 @@ def updateClientePais(codigo):
 def updateClienteCodigoPostal(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -310,7 +310,7 @@ def updateClienteCodigoPostal(codigo):
 def updateClienteCodigoEmpVentas(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -337,7 +337,7 @@ def updateClienteCodigoEmpVentas(codigo):
 def updateClienteLimiteCredito(codigo):
     while True:
         if(codigo != None):
-            cliente= getCli.getClienteCodigos2((codigo))
+            cliente= getCli.getClienteCodigos((codigo))
             if (cliente):
                 print(tabulate(cliente, headers="keys", tablefmt="github"))
                 opc=int(input("""

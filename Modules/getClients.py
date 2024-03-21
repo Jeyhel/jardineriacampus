@@ -46,7 +46,7 @@ def getAllClientsName():
 
 
 
-def getOneClienteCodigo(codigo):
+def getClienteCodigos(codigo):
     for val in getAlldatacliente():
         if(val.get('codigo_cliente') == codigo):
             return {

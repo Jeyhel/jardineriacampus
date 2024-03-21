@@ -99,8 +99,8 @@ def menuClientes():
               C L I E N T S
               
                                    
-               1. Reportes de los productos
-               2. Guardar, actualizar y eliminar productos
+               1. Reportes de los clientes
+               2. Guardar, actualizar y eliminar clientes
                0. Regresar al menu principal 
                
              """)
@@ -124,8 +124,8 @@ def menuEmpleado():
               E M P L E A D O  
               
                                    
-               1. Reportes de los productos
-               2. Guardar, actualizar y eliminar productos
+               1. Reportes de los empleados
+               2. Guardar, actualizar y eliminar de los empleados
                0. Regresar al menu principal 
                
              """)
@@ -148,8 +148,8 @@ def menuOficina():
               O F I C I N A 
               
                                    
-               1. Reportes de los productos
-               2. Guardar, actualizar y eliminar productos
+               1. Reportes de la oficina
+               2. Guardar, actualizar y eliminar de la oficina
                0. Regresar al menu principal 
                
              """)
@@ -173,8 +173,8 @@ def menuPago():
               P A G O 
               
                                    
-               1. Reportes de los productos
-               2. Guardar, actualizar y eliminar productos
+               1. Reportes de los pagos
+               2. Guardar, actualizar y eliminar de los pagos
                0. Regresar al menu principal 
                
              """)
@@ -198,8 +198,8 @@ def menuPedido():
               P E D I D O 
               
                                    
-               1. Reportes de los productos
-               2. Guardar, actualizar y eliminar productos
+               1. Reportes de los pedidos
+               2. Guardar, actualizar y eliminar de los pedidos
                0. Regresar al menu principal 
                
              """)

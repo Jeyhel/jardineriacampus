@@ -9,7 +9,7 @@ import time
 def updateEmpleadoNombre(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -36,7 +36,7 @@ def updateEmpleadoNombre(codigo):
 def updateEmpleadoApellido1(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -64,7 +64,7 @@ def updateEmpleadoApellido1(codigo):
 def updateEmpleadoApellido2(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -92,7 +92,7 @@ def updateEmpleadoApellido2(codigo):
 def updateEmpleadoExtension(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -119,7 +119,7 @@ def updateEmpleadoExtension(codigo):
 def updateEmpleadoEmail(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -146,7 +146,7 @@ def updateEmpleadoEmail(codigo):
 def updateEmpleadoCodigoOficina(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -173,7 +173,7 @@ def updateEmpleadoCodigoOficina(codigo):
 def updateEmpleadoCodigoJefe(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
@@ -200,7 +200,7 @@ def updateEmpleadoCodigoJefe(codigo):
 def updateEmpleadoPuesto(codigo):
     while True:
         if(codigo != None):
-            empleado= getEmp.getEmpleadoCodigos2((codigo))
+            empleado= getEmp.getEmpleadoCodigos((codigo))
             if (empleado):
                 print(tabulate(empleado, headers="keys", tablefmt="github"))
                 opc=int(input("""
