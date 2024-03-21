@@ -4,9 +4,19 @@ import requests
 import json
 
 def getAllOfi():
-    peticion = requests.get(" http://154.38.171.54:5005/oficinas")
+    peticion = requests.get("http://154.38.171.54:5005/oficinas")
     data = peticion.json()
     return data 
+
+def getAllOfiId(id):
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{id}")
+    return [peticion.json()] if peticion.ok else []
+
+def getAllOficina(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5005/oficinas/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+
+
 
 
 #punto 1

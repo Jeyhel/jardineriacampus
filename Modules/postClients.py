@@ -11,8 +11,8 @@ def guardarCliente():
     while True:
         try:
             
-            #CODIGO CLIENTE
             
+            #Codigo del cliente
             if not cliente.get("codigo_cliente"):
                 codigo = input("ingrese el codigo del cliente: ")
                 if re.match(r'^[0-9]+$', codigo) is not None:
@@ -25,8 +25,8 @@ def guardarCliente():
                     raise Exception ("el codigo ingresado no es valido, ingrese solo digitos numericos, por favor. ")
                     
             
-             #NOMBRE CLIENTE
              
+            #Nomre del cliente
             if not cliente.get("nombre_cliente"):
                nombre_cliente = input(f"Ingrese el nombre del cliente: ")
                if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', nombre_cliente) is not None:
@@ -34,8 +34,8 @@ def guardarCliente():
                else:
                     raise Exception("Por favor ingrese de nuevo el nombre, recuerde que la palabra debe iniciar con mayúscula.")
             
-            #NOMBRE CONTACTO
             
+            #Nombre del contacto
             if not cliente.get("nombre_contacto"):
                 nombre_contacto= input("ingrese el nombre del contacto: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',nombre_contacto) is not None:
@@ -43,8 +43,8 @@ def guardarCliente():
                 else:
                     raise Exception("el nombre no es valido,por favor inicie todas las palabras con mayuscula")
              
-            #APELLIDO CONTACTO
             
+            #Apellido del contacto
             if not cliente.get("apelllido_contacto"):
                 apelllido_contacto = input("ingrese el apellido  del contacto: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',apelllido_contacto) is not None:
@@ -53,8 +53,8 @@ def guardarCliente():
                     raise Exception("el apellido ingresado no es valido,por favor inicie todas las palabras con mayuscula")
             
                
-            # TELEFONO 
             
+            # Telefono del contacto  
             if not cliente.get("telefono"):
                 telefono= input("ingrese el numero de telefono: ")
                 if re.match(r'^\d{1,3} ?\d{4}-?\d{4}$',telefono) is not None:
@@ -65,8 +65,8 @@ def guardarCliente():
                 else:
                     raise Exception ("Telefono no valido, ejm: 845210369 o 5 5487-8745 ")
                 
-            #FAX
             
+            #Fax
             if not cliente.get("fax"):
                 fax = input("ingrese el fax : ")
                 if re.match(r'^\d{1,3} ?\d{4}-?\d{4}$',fax) is not None:
@@ -74,22 +74,22 @@ def guardarCliente():
                 else:
                     raise Exception("el fax ingresado no es valido")
                 
-            #LINEA DIRECCION 1
             
+            #Linea de direccion 1 
             if not cliente.get("linea_direccion1"):
                 linea_direccion1 = input("ingrese  la linea_direccion1 : ")
                 cliente["linea_direccion1"]= linea_direccion1
               
               
-            #LINEA DIRECCION 2
             
+            #Linea de direccion 2
             if not cliente.get("linea_direccion2"):
                 linea_direccion2 = input("ingrese  la linea_direccion2 : ")
                 cliente["linea_direccion2"]= linea_direccion2
                 
             
-            #CIUDAD
             
+            #Ciudad
             if not cliente.get("ciudad"):
                 ciudad = input("ingrese la ciudad: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',ciudad) is not None:
@@ -97,8 +97,8 @@ def guardarCliente():
                 else:
                     raise Exception("la ciudad ingresada no es valida")
                 
-            #REGION
-            
+           
+            #Region
             if not cliente.get("region"):
                 region= input("ingrese la region: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',region) is not None:
@@ -106,8 +106,8 @@ def guardarCliente():
                 else:
                     raise Exception("la region ingresada no es valida")
                 
-            #PAIS
             
+            #Pais
             if not cliente.get("pais"):
                 pais= input("ingrese  el pais: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$',pais) is not None:
@@ -115,8 +115,8 @@ def guardarCliente():
                 else:
                     raise Exception("el pais ingresado no es valido")
                 
-            #CODIGO POSTAL
             
+            #Codigo postal
             if not cliente.get("codigo_postal"):
                 codigo_postal = input("Ingrese el Codigo postal: ")
                 if re.match(r'^\d{4,5}$', codigo_postal) is not None:
@@ -125,8 +125,8 @@ def guardarCliente():
                     raise Exception("Codigo postal no valido, asegurese de ingresar 4 o 5 dígitos numéricos")
             
             
-            #CODIGO EMPLEADO REP VENTAS
-        
+            
+            #Codigo empleado de ventas
             if not cliente.get("codigo_empleado_rep_ventas"):
                 codigo_empleado_rep_ventas = input(f"Escriba el codigo del representante de ventas: ")
                 if re.match(r'^[0-9]+$', codigo_empleado_rep_ventas) is not None:
@@ -136,8 +136,8 @@ def guardarCliente():
                     raise Exception("Codigo ingresado no valido,por favor ingresar solo dígitos numéricos")
             
             
-            #LIMITE CREDITO
-                
+            
+             #Limite credito  
             if not cliente.get("limite_credito"):
                 limite_credito = input(f"Escriba el limite de credito: ")
                 if re.match(r'^[0-9]+$', limite_credito) is not None:
@@ -171,11 +171,35 @@ def guardarCliente():
 #         }
     
     
-    peticion = requests.post(" http://154.38.171.54:5001/cliente", data = json.dumps(cliente, indent =4).encode("UTF-8"))
-    res=peticion.json()
-    res["mensaje"] = "Producto Guardado"
-    return[res]
+    headers = {'Content-type': 'application/json', 'charset': 'UTF-8'}
+    peticion = requests.post("http://154.38.171.54:5001/cliente",headers=headers, data=json.dumps(cliente, indent=4).encode("UTF-8"))
+    res = peticion.json()
+    res["Mensaje"] = "Producto Guardado"
+    return [res]
 
+    #peticion = requests.post(" http://154.38.171.54:5001/cliente", data = json.dumps(cliente, indent =4).encode("UTF-8"))
+    #res=peticion.json()
+    #res["mensaje"] = "Producto Guardado"
+    #return[res]
+
+def DeleteClientes(id):
+    data = getcli.getClientsId(id)
+    if len(data):
+        peticion = requests.delete(f"http://154.38.171.54:5001/cliente/{id}")
+        if peticion.status_code == 204:
+            data.append({"message":  "Cliente eliminado correctamente"})
+            return {
+                "body": data,
+                "status": peticion.status_code,
+            }     
+    else:
+        return {
+                "body":[{
+                    "Mensaje": "Cliente no encontrado.",
+                    "id": id,
+            }],
+            "status": 400,
+            }
 
 
 def menu():
@@ -188,6 +212,8 @@ def menu():
     C L I E N T E S
 
     1. Guardar un nuevo cliente 
+    2. Eliminar un nuevo cliente 
+    3. Actualizar un nuevo cliente
     0. Salir 
     
 """)
@@ -196,6 +222,13 @@ def menu():
     if(opcion == 1):
        print(tabulate(guardarCliente(),headers="keys",tablefmt="github"))
        input("Presione Enter para continuar... ")
+
+    elif(opcion==2):
+        idCliente = input("Ingrese el id del cliente que desea eliminar: ")
+        print(tabulate(DeleteClientes(idCliente),headers="keys",tablefmt="github"))
+    
+    
+        
 
     elif(opcion==0):
        break

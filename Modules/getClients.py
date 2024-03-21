@@ -18,6 +18,16 @@ def getFechaPago():
     data = peticion.json
     return data 
 
+def getClientsId(id):
+    peticion = requests.get(f"http://154.38.171.54:5003/cliente/{id}")
+    return [peticion.json()] if peticion.ok else []
+
+def getClientsId(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5003/cliente/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+
+
+
 def getAllClientsName():
     clienteName = list()
     for val in getAlldatacliente():
@@ -45,18 +55,29 @@ def getAllTelefono(telefono):
 
              
   
-# def getAllClientePaisRegionCiudad(pais,region=None, ciudad=None): 
-#     clientZone = list()
-#     for val in cli.cliente:
-#         if(val.get('pais') == pais):
-            
-#             if((region != None or val.get('region') == region)):
-#                 clientZone.append(val) 
-#             elif((region != None and val.get('region') == region)): 
-#                 clientZone.append(val)     
-#     return clientZone
+#def getAllClientePaisRegionCiudad(pais,region=None, ciudad=None): 
+ #  clientZone = list()
+  #for val in getAlldatacliente():
+   #     if(val.get('pais') == pais):
+  #          
+   #         if((region != None or val.get('region') == region)):
+  #              clientZone.append(val) 
+  #          elif((region != None and val.get('region') == region)): 
+  #              clientZone.append(val)     
+ #       return clientZone
 
 
+
+def getAllClientName():
+    clienteName=list()
+    for val in getAlldatacliente():
+        CodigoName=dict({
+        
+            "codigo_cliente": val.get('codigo_cliente'),
+            "nombre_cliente": val.get('nombre_cliente'),
+        })
+        clienteName.append(CodigoName)
+    return clienteName
 
 #punto 6
 def getNombreClientesEspañoles():
@@ -109,14 +130,17 @@ def menu():
                                                                                                               
          1. Obtener clientes españoles
          2. Obtener clientes de la ciudad de Madrid 
-         3. Salir
+         3. Obtener todos los clientes, codigo y nombre
+         4. Salir
         """)
             opcion = int(input("\nSeleccione una de las opciones: "))
             if(opcion == 1):
-                print(tabulate( getNombreClientesEspañoles(), headers="keys", tablefmt="github"))
+                print(tabulate(getNombreClientesEspañoles(), headers="keys", tablefmt="github"))
             elif(opcion == 2):
                 print(tabulate(getAllClienteCiudadDeMadrid(), headers="keys", tablefmt="github"))
             elif(opcion == 3):
+                print(tabulate(getAllClientName(), headers="keys", tablefmt="github"))
+            elif(opcion == 4):
                 break
             else:
                 print("elija una opcion valida")

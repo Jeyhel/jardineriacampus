@@ -15,7 +15,7 @@ def guardarOficina():
             if not oficina.get("codigo_oficina"):
                 codigo_oficina = input(f"Ingrese codigo de la oficina: ")
                 if re.match(r'^[A-Z]{3}-[A-Z]{2,3}$', codigo_oficina) is not None:
-                    GOGOGO = getOfi.GETCodigoOficina(codigo_oficina)
+                    GOGOGO = getOfi.getAllOficina(codigo_oficina)
                     if GOGOGO:
                         raise Exception("Codigo de oficina ya existente.")
                     else:
@@ -81,16 +81,16 @@ def guardarOficina():
             
             
             
-            
-    peticion = requests.post("http://154.38.171.54:5005/oficinas", data=json.dumps(oficina, indent=4).encode("UTF-8"))
+    headers = {'Content-type': 'application/json', 'charset': 'UTF-8'}
+    peticion = requests.post(" ",headers=headers, data=json.dumps(oficina, indent=4).encode("UTF-8"))
     res = peticion.json()
-    res["Mensaje"] = "Oficina Guardado exitosamente"
+    res["Mensaje"] = "Producto Guardado"
     return [res]
 
 def DeleteOficina(id):
-    data = getOfi.getCodigosOficiina(id)
+    data = getOfi.getAllOfiId(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5005/oficinas/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5005/oficinas/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Oficina eliminada correctamente"})
             return {
@@ -117,6 +117,8 @@ def menu():
     O F I C I N A S
     
     1. Guardar un nuevo dato de oficina
+    2. Eliminar un nuevo dato de oficina 
+    3. Actualizar un nuevo dato de oficina
     0. Salir
     
  """)
@@ -124,9 +126,14 @@ def menu():
     if(opcion == 1):
         print(tabulate(guardarOficina(), headers="keys", tablefmt="github"))
         input("Presione Enter para continuar... ")
-
+        
+    elif(opcion == 2):
+        idOficina = input("Ingrese el id del cliente que desea eliminar: ")
+        print(tabulate(DeleteOficina(idOficina),headers="keys",tablefmt="github"))
+    
     elif(opcion==0):
        break
+   
     else:
        print("Elija una opcion correcta: ")
 

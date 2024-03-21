@@ -7,7 +7,21 @@ def getAllPago():
     data = peticion.json
     return data 
 
+def getPagoId(id):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{id}")
+    return [peticion.json()] if peticion.ok else []
 
+def getcodigoPago(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{codigo}")
+    return [peticion.json()] if peticion.ok else []
+
+def getAllformapago(forma_pago):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{forma_pago}")
+    return [peticion.json()] if peticion.ok else []
+
+def getAllITransaId(id_transaccion):
+    peticion = requests.get(f"http://154.38.171.54:5006/pagos/{id_transaccion}")
+    return [peticion.json()] if peticion.ok else []
 
 #punto 8
 def getFechaPago():
@@ -45,6 +59,15 @@ def getAllFormaDePago():
         if FormaPago not in Paypal:
             Paypal.add (FormaPago)
     return Paypal 
+
+
+def getFormasDePago(formas):
+    FormasPago = list()
+    for val in getAllPago():
+        if val.get("forma_pago") == formas: 
+            FormasPago.append(val)
+    return FormasPago
+
 
 
 

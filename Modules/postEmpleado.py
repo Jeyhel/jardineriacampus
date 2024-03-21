@@ -13,11 +13,11 @@ def GuardarEmpleado():
             
             #CODIGO EMPLEADO
             if not empleado.get("codigo_empleado"):
-                codigo = input("ingrese el codigo del empleado")
+                codigo = input("ingrese el codigo del empleado: ")
                 if re.match(r'^[0-9]+$', codigo) is not None:
                     codigo_empleado = int(codigo)
-                    GFGF = getEmp.getcodigoEmpleado(codigo)
-                    if GFGF:
+                    blah = getEmp.getcodigoEmpleado(codigo)
+                    if blah:
                         raise Exception("El codigo ingresado ya existe.")
                     else:
                         empleado["codigo_empleado"] = codigo_empleado
@@ -94,33 +94,31 @@ def GuardarEmpleado():
             if not empleado.get("puesto"):
                 puesto = input(f"Ingrese el puesto del empleado: ")
                 if re.match(r'^[A-Z][a-zA-Z0-9\s]*$', puesto) is not None:
-                    vvv = getEmp.getallpuesto(puesto)
-                    if vvv:
+                    ttt = getEmp.getallCargo(puesto)
+                    if ttt:
                         empleado["puesto"] = puesto
                         break
                     else:
                         raise Exception("Puestos validos: ( Representante Ventas, Subdirector Marketing, Subdirector Ventas, Secretaria, Director Oficina )")
                 else:
                     raise Exception("Puestos validos: ( Representante Ventas, Subdirector Marketing, Subdirector Ventas, Secretaria, Director Oficina )")
-
-
+           
 
         except Exception as error:
             print(error)
     
                 
-            
-    peticion = requests.get("http://154.38.171.54:5003/empleados",data=json.dumps(empleado, indent=4).encode("UTF-8"))
+    headers = {'Content-type': 'application/json', 'charset': 'UTF-8'}
+    peticion = requests.post("http://154.38.171.54:5003/empleados",headers=headers, data=json.dumps(empleado, indent=4).encode("UTF-8"))
     res = peticion.json()
-    res["mensaje"] = "Empleado guardado exitosamnete"
-    return[res]
-
-
+    res["Mensaje"] = "Producto Guardado"
+    return [res]
+     
 
 def DeleteEmpleado(id):
     data = getEmp.getEmpleadoId(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5003/empleados/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5003/empleados/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Empleado eliminado correctamente"})
             return {
@@ -130,14 +128,13 @@ def DeleteEmpleado(id):
     else:
         return {
                 "body":[{
-                    "Mensaje": "Empleado no encontrado.",
+                    "Mensaje": "Empleado no encontrado",
                     "id": id,
             }],
             "status": 400,
             }
     
-
-
+    
 def menu():
     while True:
         os.system("clear")
@@ -149,17 +146,19 @@ def menu():
 
        1. Guardar un nuevo empleado
        2. Borrar un empleado
+       3. Actualizar un nuevo empleado
        0. Salir
-        """)
-
+       
+""")
         opcion= int(input("\nSeleccione una de las opciones: "))
         if(opcion == 1):
             print(tabulate(GuardarEmpleado(), headers="keys", tablefmt="github"))
             input("Presione Enter para continuar... ")
         
         elif(opcion == 2):
-            print(tabulate(DeleteEmpleado(id), headers="keys", tablefmt="github"))
-            input("Presione Enter para continuar... ")
+            idEmpleado = input("Ingrese el id del empleado que desea eliminar: ")
+            print(tabulate(DeleteEmpleado(idEmpleado), headers="keys", tablefmt="github"))
+            
 
         elif(opcion==0):
             break

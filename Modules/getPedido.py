@@ -7,6 +7,13 @@ def getAllPedido():
     data = peticion.json
     return data 
 
+def getAllPedidoId(id):
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{id}")
+    return [peticion.json()] if peticion.ok else []
+
+def getcodigoPedido(codigo):
+    peticion = requests.get(f"http://154.38.171.54:5007/pedidos/{codigo}")
+    return [peticion.json()] if peticion.ok else []
 
 
 #punto 9

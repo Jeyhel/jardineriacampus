@@ -3,10 +3,11 @@ import requests
 import os 
 from tabulate import tabulate
 import Modules.getPedido as getPed
+import Modules.getClients as getCli
 import re
+
 def guardarPedido():
-    
-    pedido = dict ()
+    pedido = dict()
     while True:
         try:
             
@@ -15,7 +16,7 @@ def guardarPedido():
             if not pedido.get("codigo_pedido"):
                 codigo = input ("ingrese el codigo del producto: ")
                 if re.match(r'^[A-Z]{2}-\d{3}$', codigo)is not None:
-                    if getPed.getAllCodigoPedido(codigo):
+                    if getPed.getCodigoPedido(codigo):
                         raise Exception ("el codigo ingresado ya existe")
                     
                     else: pedido["codigo_producto"] = codigo
@@ -60,32 +61,33 @@ def guardarPedido():
                     
             #CODIGO CLIENTE
             if not pedido.get("codigo_cliente"):
-                codigo_cliente=input("ingrese el codigo del cliente")
+                codigo = input("Ingrese el codigo del cliente: ")
                 if re.match(r'^[0-9]+$',codigo)is not None:
-                    codigo_cliente = int(codigo_cliente)
-                    AAA =getPed.getAllcodigoCliente(codigo)
-                    if AAA:
-                        pedido["codigo_producto"] = codigo
+                    codigo = int(codigo)
+                    tkt = getCli.getOneClienteCodigo(codigo)
+                    if tkt:
+                        pedido["codigo_cliente"] = codigo
                         break
                     else:
-                        raise Exception ("el codigo del cliente no esta registrado") 
+                        raise Exception("El codigo del cliente no esta registrado.")
                 else:
-                    raise Exception ("el codigo del cliente no esta registrado")                  
+                    raise Exception("El codigo del cliente no esta registrado.")                 
             
         except Exception as error:
             print(error)
-            
-    peticion = requests.post("http://154.38.171.54:5007/pedidos", data=json.dumps(pedido, indent=4).encode("UTF-8"))
+
+    headers = {'Content-type': 'application/json', 'charset': 'UTF-8'}
+    peticion = requests.post("http://154.38.171.54:5007/pedidos",headers=headers, data=json.dumps(pedido, indent=4).encode("UTF-8"))
     res = peticion.json()
-    res["Mensaje"] = "Pedido Guardado exitosamente"
+    res["Mensaje"] = "Producto Guardado"
     return [res]
 
 
 
 def DeletePedido(id):
-    data = getPed.getPedidoCodigoasd(id)
+    data = getPed. getcodigoPedido(id)
     if len(data):
-        peticion = requests.delete("http://154.38.171.54:5007/pedidos/{id}")
+        peticion = requests.delete(f"http://154.38.171.54:5007/pedidos/{id}")
         if peticion.status_code == 204:
             data.append({"message":  "Pedido eliminado exitosamente"})
             return {
@@ -100,14 +102,7 @@ def DeletePedido(id):
             }],
             "status": 400,
             }
-        
-
-
-    peticion = requests.post("http://154.38.171.54:5007/pedidos", data = json.dumps(pedido, indent =4).encode("UTF-8"))
-    res=peticion.json()
-    res["mensaje"] = "Producto Guardado"
-    return [res] 
-
+    
 def menu():
   while True:
     os.system("clear")
@@ -117,14 +112,20 @@ def menu():
     D A T O S   D E   L O S 
     P E D I D O S
     
-    1.Guardar un nuevos pedido
-    0.Salir
+    1. Guardar un nuevo pedido
+    2. Borrar un nuevo pedido
+    3. Actualizar un nuevo pedido
+    0. Salir
 """)
 
     opcion= int(input("\nSeleccione una de las opciones: "))
     if(opcion == 1):
         print(tabulate(guardarPedido(), headers="keys", tablefmt="github"))
         input("Presione Enter para continuar... ")
+    
+    elif(opcion == 2):
+        idPedido= input("Ingrese el id del empleado que desea eliminar: ")
+        print(tabulate(DeletePedido(idPedido), headers="keys", tablefmt="github"))
 
     elif(opcion==0):
        break

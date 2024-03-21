@@ -83,7 +83,7 @@ import Modules.getPago as RepPago
 import Modules.postPago as CRUDPago
 
 import Modules.getPedido as RepPedido
-import Modules.getPedido as CRUDPedido
+import Modules.postPedido as CRUDPedido
 
 import Modules.getProducto as Repproducto
 import Modules.postProducto as CRUDproducto
@@ -207,7 +207,7 @@ def menuPedido():
         if(opcion == 1):
              RepPedido.menu()
         if(opcion == 2):
-            CRUDPedido.menu()
+             CRUDPedido.menu()
         elif(opcion == 0):
             break
 
@@ -235,6 +235,7 @@ def menuProducto():
             CRUDproducto.menu()
         elif(opcion == 0):
             break
+        
 
 if(__name__ == "__main__"):
         while True:
